@@ -1,21 +1,20 @@
 {
-  "marketing-layout": {
+  "layout": {
     "metadata": {
       "title": {
-        "default": "Theme Picker",
-        "template": "%s | Theme Picker"
+        "default": "TGN",
+        "template": "%s | TGN"
       },
       "description": "Discover customizable eCommerce themes designed for performance, accessibility, and SEO. Choose Minimalist, Bold & Dynamic, or Classic styles to enhance your store's experience."
     }
   },
-  "customize-layout": {
-    "metadata": {
-      "title": {
-        "default": "Customize Theme",
-        "template": "%s | Customize Theme"
-      },
-      "description": "Discover customizable eCommerce themes designed for performance, accessibility, and SEO. Choose Minimalist, Bold & Dynamic, or Classic styles to enhance your store's experience."
-    }
+  "header": {
+    "contact_us": "Contact Us",
+    "follow_us": "Follow Us",
+    "toggle_navigation_menu": "Toggle Navigation Menu"
+  },
+  "lets-talk-business": {
+    "headline": "Let's Talk Business"
   },
   "home-page": {
     "metadata": {
