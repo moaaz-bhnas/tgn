@@ -4,6 +4,7 @@ import { getDictionary } from "@/lib/dictionaries";
 import { Locale } from "@/types/locale";
 import consts from "@/lib/consts";
 import isRtl from "@/lib/is-rtl";
+import Header from "./components/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export async function generateMetadata({ params }: { params: { locale: Locale } }) {
   const {
-    "marketing-layout": { metadata: dict },
+    layout: { metadata: dict },
   } = await getDictionary(params.locale);
 
   return {
@@ -35,16 +36,22 @@ export async function generateStaticParams() {
   });
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }>) {
+  const { locale } = await params;
+
   return (
-    <html lang={params.locale} dir={isRtl(params.locale) ? "rtl" : "ltr"}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+    <html lang={locale} dir={isRtl(locale) ? "rtl" : "ltr"}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Header locale={locale} />
+
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
