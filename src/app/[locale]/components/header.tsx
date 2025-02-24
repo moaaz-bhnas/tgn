@@ -15,10 +15,9 @@ import { Facebook, Instagram, Linkedin, Mouse } from "lucide-react";
 import StickyBar from "./sticky-bar";
 import { Locale } from "@/types/locale";
 import { getDictionary } from "@/lib/dictionaries";
+import { T } from "@/types/i18n";
 
-export default async function Header({ locale }: { locale: Locale }) {
-  const { header: dict } = await getDictionary(locale);
-
+export default async function Header({ t }: { t: T }) {
   const socialLinks = [
     {
       name: "Linkedin",
@@ -47,7 +46,7 @@ export default async function Header({ locale }: { locale: Locale }) {
 
         {/* Contact Us "Desktop" */}
         <div className="hidden items-center gap-2 text-sm font-medium md:flex">
-          <b>{dict.contact_us}</b>
+          <b>{t.contact_us}</b>
 
           <Separator className="w-4 bg-black" />
 
@@ -59,7 +58,7 @@ export default async function Header({ locale }: { locale: Locale }) {
 
         {/* Follow Us "Desktop" */}
         <div className="hidden items-center gap-2 text-sm font-medium md:flex">
-          <b>{dict.follow_us}</b>
+          <b>{t.follow_us}</b>
 
           <Separator className="w-4 bg-black" />
 
@@ -79,7 +78,7 @@ export default async function Header({ locale }: { locale: Locale }) {
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="rounded-full">
                 <MenuIcon className="h-5 w-5" />
-                <span className="sr-only">{dict.toggle_navigation_menu}</span>
+                <span className="sr-only">{t.toggle_navigation_menu}</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right">

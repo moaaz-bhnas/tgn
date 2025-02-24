@@ -18,15 +18,15 @@ const geistMono = Geist_Mono({
 
 export async function generateMetadata({ params }: { params: { locale: Locale } }) {
   const {
-    layout: { metadata: dict },
+    layout: { metadata: t },
   } = await getDictionary(params.locale);
 
   return {
     title: {
-      default: dict.title.default,
-      template: dict.title.template,
+      default: t.title.default,
+      template: t.title.template,
     },
-    description: dict.description,
+    description: t.description,
   };
 }
 
@@ -44,11 +44,14 @@ export default async function RootLayout({
   params: Promise<{ locale: Locale }>;
 }>) {
   const { locale } = await params;
+  const {
+    layout: { header },
+  } = await getDictionary(locale);
 
   return (
     <html lang={locale} dir={isRtl(locale) ? "rtl" : "ltr"}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header locale={locale} />
+        <Header t={header} />
 
         <main>{children}</main>
       </body>

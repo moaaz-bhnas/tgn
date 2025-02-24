@@ -7,13 +7,13 @@ import { getDictionary } from "@/lib/dictionaries";
 export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const {
-    layout: { metadata: dict },
+    "home-page": { "lets-talk-business": t },
   } = await getDictionary(locale);
 
   return (
     <div className="bg-red-400">
       <Container>
-        <LetsTalkBusiness locale={locale} />
+        <LetsTalkBusiness t={t} />
       </Container>
     </div>
   );

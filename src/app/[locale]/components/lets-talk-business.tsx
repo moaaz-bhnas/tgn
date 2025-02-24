@@ -1,22 +1,20 @@
 "use client";
 
-import { Locale } from "@/types/locale";
+import { T } from "@/types/i18n";
 import { TypeAnimation } from "react-type-animation";
 
 type Props = {
-  locale: Locale;
+  t: T;
 };
 
-function LetsTalkBusiness({ locale }: Props) {
-  // return <div className="text-7xl font-extrabold uppercase text-center">{"{Let's talk business}"}</div>;
+function LetsTalkBusiness({ t }: Props) {
   return (
     <div className="flex justify-center">
       <TypeAnimation
         className="text-[4.45rem] font-extrabold uppercase text-center"
-        sequence={[]}
+        sequence={[t.headline]}
         wrapper="span"
         speed={30}
-        // style={{ fontSize: "2em", display: "inline-block" }}
       />
     </div>
   );

@@ -6,19 +6,19 @@
         "template": "%s | TGN"
       },
       "description": "اكتشف قوالب التجارة الإلكترونية القابلة للتخصيص المصممة للأداء، إمكانية الوصول، وتحسين محركات البحث. اختر من بين الأنماط Minimalist، Bold & Dynamic، أو Classic لتحسين تجربة متجرك."
+    },
+    "header": {
+      "contact_us": "اتصل بنا",
+      "follow_us": "تابعنا",
+      "toggle_navigation_menu": "فعل قائمة التنقل"
     }
-  },
-  "header": {
-    "contact_us": "اتصل بنا",
-    "follow_us": "تابعنا",
-    "toggle_navigation_menu": "فعل قائمة التنقل"
-  },
-  "lets-talk-business": {
-    "headline": "حان وقت التغيير!"
   },
   "home-page": {
     "metadata": {
       "title": "الرئيسية"
+    },
+    "lets-talk-business": {
+      "headline": "حان وقت التغيير!"
     }
   },
   "hero": {
