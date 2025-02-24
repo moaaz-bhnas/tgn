@@ -1,10 +1,6 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/obus3LxsAfo
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
+"use client";
+
 import Link from "next/link";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import Logo from "@/app/[locale]/components/logo";
@@ -13,11 +9,11 @@ import consts from "@/lib/consts";
 import { trim } from "lodash";
 import { Facebook, Instagram, Linkedin, Mouse } from "lucide-react";
 import StickyBar from "./sticky-bar";
-import { Locale } from "@/types/locale";
-import { getDictionary } from "@/lib/dictionaries";
 import { T } from "@/types/i18n";
+import { useWindowScroll } from "@uidotdev/usehooks";
+import { cn } from "@/lib/utils";
 
-export default async function Header({ t }: { t: T }) {
+export default function Header({ t }: { t: T }) {
   const socialLinks = [
     {
       name: "Linkedin",
@@ -36,8 +32,14 @@ export default async function Header({ t }: { t: T }) {
     },
   ];
 
+  const [{ y }] = useWindowScroll();
+
   return (
-    <StickyBar isStickyTop className="bg-red-400">
+    <StickyBar
+      isStickyTop
+      containerClassName="bg-red-400"
+      className={cn("bg-red-400 transition", y && y > 0 ? "bg-red-400/90 backdrop-blur shadow-sm" : "")}
+    >
       <nav className="h-full flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
