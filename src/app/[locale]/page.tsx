@@ -4,6 +4,8 @@ import LetsTalkBusiness from "./components/lets-talk-business";
 import { Locale } from "@/types/locale";
 import { getDictionary } from "@/lib/dictionaries";
 import Banner from "./components/banner";
+import GrowByTG from "./components/marquee";
+import Projects from "./components/projects";
 
 export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -21,6 +23,12 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
 
       <Container>
         <Banner />
+      </Container>
+
+      <GrowByTG />
+
+      <Container>
+        <Projects />
       </Container>
     </div>
   );
