@@ -9,7 +9,7 @@ type Props = {
 };
 
 function LetsTalkBusiness({ t }: Props) {
-  const fontStyles = "text-[4.45rem] font-extrabold uppercase text-center";
+  const fontStyles = "text-[5.4rem] font-extrabold uppercase text-center";
 
   return (
     <div className="flex justify-center items-center gap-1.5">

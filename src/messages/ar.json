@@ -11,6 +11,22 @@
       "contact_us": "اتصل بنا",
       "follow_us": "تابعنا",
       "toggle_navigation_menu": "فعل قائمة التنقل"
+    },
+    "footer": {
+      "be_different": "كن مختلفًا",
+      "contact_us": "تواصل معنا",
+      "contact_sales": "تحدث مع فريق المبيعات",
+      "send_feedback": "أرسل لنا ملاحظاتك",
+      "who_we_are": "من نحن",
+      "services": "خدماتنا",
+      "follow_us": "تابعنا",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "linkedin": "Linkedin",
+      "behance": "Behance",
+      "come_on_board": "انضم إلينا",
+      "get_interview": "احصل على مقابلة",
+      "looking_for": "عم نبحث؟"
     }
   },
   "home-page": {
@@ -19,44 +35,9 @@
     },
     "lets-talk-business": {
       "headline": "حان وقت التغيير!"
+    },
+    "marquee": {
+      "text_element": "تطور معنا"
     }
-  },
-  "hero": {
-    "headline": "قم ببناء متجر أحلامك",
-    "subheading": "اكتشف قوالب قابلة للتخصيص ومُصممة للأداء العالي، مُحسّنة لتحسين محركات البحث (SEO)، ومتجاوبة وسهلة الوصول.",
-    "cta": "اختر تصميمك"
-  },
-  "features": {
-    "headline": "ميزات قوية لكل قالب",
-    "subheading": "مصممة لتوفير أداء استثنائي وسهولة استخدام.",
-    "performance": {
-      "title": "الأداء",
-      "description": "تم بناؤها باستخدام Next.js للسرعة، وقابلية التوسع، والأداء الحديث."
-    },
-    "seo": {
-      "title": "تحسين محركات البحث",
-      "description": "تحسين محركات البحث مدمج في كل تصميم."
-    },
-    "responsiveness": {
-      "title": "الاستجابة",
-      "description": "مهيأ لجميع الأجهزة—المحمول، التابلت، وسطح المكتب."
-    },
-    "accessibility": {
-      "title": "إمكانية الوصول على الويب",
-      "description": "ضمان الشمولية مع تصاميم تتوافق مع معايير الوصول."
-    },
-    "ux": {
-      "title": "مبادئ تجربة المستخدم",
-      "description": "تصاميم موجهة للمستخدم لضمان تفاعلات سلسة وبديهية."
-    },
-    "multiLanguage": {
-      "title": "دعم متعدد اللغات",
-      "description": "تخصيص المحتوى بسهولة لخدمة جمهور عالمي."
-    }
-  },
-  "themes": {
-    "headline": "استكشف القوالب المتاحة",
-    "subheading": "اختر القالب الذي يناسب علامتك التجارية وابدأ التخصيص اليوم.",
-    "customize": "تخصيص"
   }
 }

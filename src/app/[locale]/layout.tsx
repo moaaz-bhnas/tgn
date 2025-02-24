@@ -1,18 +1,15 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Sora } from "next/font/google";
 import "../globals.css";
 import { getDictionary } from "@/lib/dictionaries";
 import { Locale } from "@/types/locale";
 import consts from "@/lib/consts";
 import isRtl from "@/lib/is-rtl";
 import Header from "./components/header";
+import Footer from "./components/footer";
+import { cn } from "@/lib/utils";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
 });
 
@@ -46,16 +43,16 @@ export default async function RootLayout({
   params: Promise<{ locale: Locale }>;
 }>) {
   const { locale } = await params;
-  const {
-    layout: { header },
-  } = await getDictionary(locale);
+  const { layout: t } = await getDictionary(locale);
 
   return (
     <html lang={locale} dir={isRtl(locale) ? "rtl" : "ltr"}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header t={header} />
+      <body className={cn("antialiased", sora.variable, sora.className)}>
+        <Header t={t.header} />
 
         <main>{children}</main>
+
+        <Footer t={t.footer} />
       </body>
     </html>
   );
