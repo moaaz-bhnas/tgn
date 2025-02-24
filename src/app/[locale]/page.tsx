@@ -6,6 +6,7 @@ import { getDictionary } from "@/lib/dictionaries";
 import Banner from "./components/banner";
 import GrowByTG from "./components/marquee";
 import Projects from "./components/projects";
+import isRtl from "@/lib/is-rtl";
 
 export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -25,7 +26,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
         <Banner />
       </Container>
 
-      <GrowByTG />
+      <GrowByTG direction={isRtl(locale) ? "right" : "left"} />
 
       <Container>
         <Projects />
