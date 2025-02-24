@@ -16,10 +16,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export async function generateMetadata({ params }: { params: { locale: Locale } }) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+
   const {
     layout: { metadata: t },
-  } = await getDictionary(params.locale);
+  } = await getDictionary(locale);
 
   return {
     title: {
