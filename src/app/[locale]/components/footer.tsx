@@ -63,14 +63,23 @@ function Footer({ t }: Props) {
     ];
 
     return (
-      <div className="flex flex-wrap uppercase justify-between items-start -mx-4">
+      <div className="flex flex-wrap xl:flex-nowrap uppercase justify-between items-start -mx-4">
         {columns.map((column, index) => (
-          <div key={index} className="w-full sm:w-1/2 md:w-auto flex flex-col lg:flex-row gap-2 p-4">
+          <div key={index} className="w-full sm:w-1/2 md:w-auto flex flex-col xl:flex-row gap-2 p-4">
             <h3 className="font-bold">{column.label}</h3>
 
             <div className="flex flex-col gap-1">
               {column.links.map((link, index) => (
-                <Link key={index} href={link.href} className={cn("font-extralight")}>
+                <Link
+                  key={index}
+                  href={link.href}
+                  className={cn(
+                    "font-extralight hover:underline",
+                    index === 0
+                      ? "xl:before:content-[''] xl:before:w-5 xl:before:h-[1px] xl:before:bg-white xl:before:inline-block xl:before:me-1"
+                      : ""
+                  )}
+                >
                   {link.label}
                 </Link>
               ))}
@@ -81,17 +90,25 @@ function Footer({ t }: Props) {
     );
   }
 
+  function renderCopyrightsBar() {
+    return (
+      <div className="flex items-center justify-between">
+        <small>{t.copyright}</small>
+        <small>{t.privacy_terms}</small>
+      </div>
+    );
+  }
+
   return (
     <footer className="bg-black text-white">
-      <Container>
-        <div className="space-y-6">
-          {/* Logos */}
-          {renderLogosBar()}
+      {/* Logos */}
+      <Container>{renderLogosBar()}</Container>
 
-          {/* Links */}
-          {renderLinksBar()}
-        </div>
-      </Container>
+      {/* Links */}
+      <Container>{renderLinksBar()}</Container>
+
+      {/* Copyrights */}
+      <Container>{renderCopyrightsBar()}</Container>
     </footer>
   );
 }
