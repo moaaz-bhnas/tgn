@@ -11,6 +11,24 @@
       "contact_us": "contact us",
       "follow_us": "follow us",
       "toggle_navigation_menu": "Toggle Navigation Menu"
+    },
+    "footer": {
+      "be_different": "be different",
+      "contact_us": "contact us",
+      "contact_sales": "Speak to our sales team",
+      "send_feedback": "send us a feedback",
+      "who_we_are": "who we are",
+      "services": "services",
+      "follow_us": "follow us",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "linkedin": "Linkedin",
+      "behance": "Behance",
+      "come_on_board": "come on board",
+      "get_interview": "get an interview",
+      "looking_for": "What are we looking for?",
+      "copyright": "© 2025 Top Growth Network. All Rights Reserved.",
+      "privacy_terms": "Privacy & Terms"
     }
   },
   "home-page": {
@@ -19,44 +37,9 @@
     },
     "lets-talk-business": {
       "headline": "Let's Talk Business"
+    },
+    "marquee": {
+      "text_element": "Grow on purpose"
     }
-  },
-  "hero": {
-    "headline": "Build Your Dream Store",
-    "subheading": "Discover customizable, performance-driven themes built for SEO, responsiveness, and accessibility.",
-    "cta": "Choose a Theme"
-  },
-  "features": {
-    "headline": "Powerful Features for Every Theme",
-    "subheading": "Designed to deliver exceptional performance and usability.",
-    "performance": {
-      "title": "Performance",
-      "description": "Built with Next.js for speed, scalability, and modern performance."
-    },
-    "seo": {
-      "title": "SEO",
-      "description": "Search engine optimization baked into every design."
-    },
-    "responsiveness": {
-      "title": "Responsiveness",
-      "description": "Optimized for all devices—mobile, tablet, and desktop."
-    },
-    "accessibility": {
-      "title": "Web Accessibility",
-      "description": "Ensuring inclusivity with designs that comply with accessibility standards."
-    },
-    "ux": {
-      "title": "UX Principles",
-      "description": "User-focused designs ensuring smooth and intuitive interactions."
-    },
-    "multiLanguage": {
-      "title": "Multi-language Support",
-      "description": "Easily localize content to cater to a global audience."
-    }
-  },
-  "themes": {
-    "headline": "Explore Our Themes",
-    "subheading": "Choose a theme that fits your brand and start customizing it today.",
-    "customize": "Customize"
   }
 }
