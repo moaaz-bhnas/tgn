@@ -10,7 +10,12 @@
     "header": {
       "contact_us": "اتصل بنا",
       "follow_us": "تابعنا",
-      "toggle_navigation_menu": "فعل قائمة التنقل"
+      "toggle_navigation_menu": "فعل قائمة التنقل",
+      "main_nav": "القائمة الرئيسية",
+      "about_us": "من نحن",
+      "case_study": "تجارب ناجحة",
+      "services": "خدماتنا",
+      "come_on_board": "انضم إلينا"
     },
     "footer": {
       "be_different": "كن مختلفًا",

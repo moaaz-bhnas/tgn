@@ -10,7 +10,12 @@
     "header": {
       "contact_us": "contact us",
       "follow_us": "follow us",
-      "toggle_navigation_menu": "Toggle Navigation Menu"
+      "toggle_navigation_menu": "Toggle Navigation Menu",
+      "main_nav": "Main Navigation",
+      "about_us": "about us",
+      "case_study": "case study",
+      "services": "services",
+      "come_on_board": "come on board"
     },
     "footer": {
       "be_different": "be different",

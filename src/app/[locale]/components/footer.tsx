@@ -94,7 +94,9 @@ function Footer({ t }: Props) {
     return (
       <div className="flex items-center justify-between">
         <small>{t.copyright}</small>
-        <small>{t.privacy_terms}</small>
+        <Link className="hover:underline" href={"/"}>
+          <small>{t.privacy_terms}</small>
+        </Link>
       </div>
     );
   }
