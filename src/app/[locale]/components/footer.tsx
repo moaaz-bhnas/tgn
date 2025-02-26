@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Container from "./container";
+import Container from "../../../components/container";
 import { T } from "@/types/i18n";
 import Link from "next/link";
 import { cn } from "@/lib/utils";

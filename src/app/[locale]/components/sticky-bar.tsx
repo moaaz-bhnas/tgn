@@ -1,4 +1,4 @@
-import Container from "./container";
+import Container from "../../../components/container";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import consts from "@/lib/consts";

@@ -12,15 +12,24 @@ import { cn } from "@/lib/utils";
 import SideNav from "./side-nav";
 import FollowUs from "./follow-us";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Header({ t }: { t: T }) {
   const [{ y }] = useWindowScroll();
+  const pathname = usePathname();
+
+  const isHomePage = pathname.split("/").filter(Boolean).length === 1;
 
   return (
     <StickyBar
       isStickyTop
-      containerClassName="bg-tgred"
-      className={cn("bg-tgred transition", y && y > 0 ? "bg-tgred/90 backdrop-blur shadow-sm" : "")}
+      containerClassName={isHomePage ? "bg-tgred" : "bg-tggrey"}
+      className={cn(
+        "transition",
+        isHomePage ? "bg-tgred" : "bg-tggrey",
+        y && y > 0 ? "backdrop-blur shadow-sm" : "",
+        y && y > 0 ? (isHomePage ? "bg-tgred/90" : "bg-tggrey/90") : ""
+      )}
     >
       <nav className="h-full flex items-center justify-between">
         {/* Logo */}
