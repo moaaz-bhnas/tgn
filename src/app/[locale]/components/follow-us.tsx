@@ -30,12 +30,7 @@ function FollowUs({ t, color = "black" }: Props) {
   ];
 
   return (
-    <div
-      className={cn(
-        "hidden items-center gap-2 text-sm font-medium md:flex",
-        color == "black" ? "text-black" : "text-white"
-      )}
-    >
+    <div className={cn("flex items-center gap-2 text-sm font-medium", color == "black" ? "text-black" : "text-white")}>
       <b>{t.follow_us}</b>
 
       <Separator className={cn("w-4 bg-black", color == "black" ? "bg-black" : "bg-white")} />

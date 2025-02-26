@@ -29,19 +29,23 @@ export default function Header({ t }: { t: T }) {
         </Link>
 
         {/* Contact Us "Desktop" */}
-        <div className="hidden items-center gap-2 text-sm font-medium md:flex">
+        <div className="hidden items-center gap-2 text-sm font-medium lg:flex">
           <b>{t.contact_us}</b>
 
           <Separator className="w-4 bg-black" />
 
-          <a href={`tel:${trim(consts.CONTACT_NUMBER)}`}>{consts.CONTACT_NUMBER}</a>
+          <a dir="ltr" href={`tel:${trim(consts.CONTACT_NUMBER)}`}>
+            {consts.CONTACT_NUMBER}
+          </a>
         </div>
 
         {/* Mouse */}
         <Image className="w-8" src={"/images/icons/mouse-black.png"} alt="Mouse" width={0} height={0} sizes="10rem" />
 
         {/* Follow Us "Desktop" */}
-        <FollowUs t={t} />
+        <div className="hidden lg:block">
+          <FollowUs t={t} />
+        </div>
 
         <SideNav t={t} />
       </nav>
