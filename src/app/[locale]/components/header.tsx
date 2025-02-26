@@ -5,13 +5,13 @@ import Logo from "@/app/[locale]/components/logo";
 import { Separator } from "@/components/ui/separator";
 import consts from "@/lib/consts";
 import { trim } from "lodash";
-import { Facebook, Instagram, Linkedin, Mouse } from "lucide-react";
 import StickyBar from "./sticky-bar";
 import { T } from "@/types/i18n";
 import { useWindowScroll } from "@uidotdev/usehooks";
 import { cn } from "@/lib/utils";
 import SideNav from "./side-nav";
 import FollowUs from "./follow-us";
+import Image from "next/image";
 
 export default function Header({ t }: { t: T }) {
   const [{ y }] = useWindowScroll();
@@ -19,8 +19,8 @@ export default function Header({ t }: { t: T }) {
   return (
     <StickyBar
       isStickyTop
-      containerClassName="bg-red-400"
-      className={cn("bg-red-400 transition", y && y > 0 ? "bg-red-400/90 backdrop-blur shadow-sm" : "")}
+      containerClassName="bg-tgred"
+      className={cn("bg-tgred transition", y && y > 0 ? "bg-tgred/90 backdrop-blur shadow-sm" : "")}
     >
       <nav className="h-full flex items-center justify-between">
         {/* Logo */}
@@ -38,7 +38,7 @@ export default function Header({ t }: { t: T }) {
         </div>
 
         {/* Mouse */}
-        <Mouse className="w-6" />
+        <Image className="w-8" src={"/images/icons/mouse-black.png"} alt="Mouse" width={0} height={0} sizes="10rem" />
 
         {/* Follow Us "Desktop" */}
         <FollowUs t={t} />
