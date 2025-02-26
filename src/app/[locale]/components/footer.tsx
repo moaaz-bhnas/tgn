@@ -28,7 +28,14 @@ function Footer({ t }: Props) {
           <Image className="w-8" src={"/images/icons/diamond-white.png"} alt="" width={0} height={0} sizes="10rem" />
         </div>
 
-        <Mouse className="w-12 h-12" />
+        <Image
+          className="w-10 ms-auto"
+          src={"/images/icons/mouse-white.png"}
+          alt={"Top Growth Network"}
+          width={0}
+          height={0}
+          sizes="3rem"
+        />
       </div>
     );
   }

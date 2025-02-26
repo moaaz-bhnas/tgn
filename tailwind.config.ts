@@ -13,6 +13,7 @@ export default {
         sora: ["var(--font-sora)"],
       },
       colors: {
+        tgred: "#ff5555",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
