@@ -77,7 +77,7 @@ function SideNav({ t }: Props) {
     ];
 
     return (
-      <div className={cn("absolute bottom-6 space-y-1.5", isRtl(locale as Locale) ? "left-6" : "right-6")}>
+      <div className={cn("absolute bottom-14 lg:bottom-6 space-y-1.5", isRtl(locale as Locale) ? "left-6" : "right-6")}>
         {elements.map((src) => (
           <Image key={src} src={src} alt="" width={30} height={30} />
         ))}
@@ -88,7 +88,7 @@ function SideNav({ t }: Props) {
   return (
     <Sheet>
       <SheetTrigger asChild className="hover:bg-transparent">
-        <Button variant="ghost" className="rounded-full w-20">
+        <Button variant="ghost" className="rounded-full w-20 -me-4">
           <Menu className="!w-full !h-auto" />
           <span className="sr-only">{t.toggle_navigation_menu}</span>
         </Button>

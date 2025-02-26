@@ -9,13 +9,11 @@ type Props = {
 };
 
 function LetsTalkBusiness({ t }: Props) {
-  const fontStyles = "text-[5.4rem] font-extrabold uppercase text-center";
-
   return (
-    <div className="flex justify-center items-center gap-1.5">
-      <p className={fontStyles}>{"{"}</p>
-      <TypeAnimation className={cn(fontStyles, "text-nowrap")} sequence={[t.headline]} wrapper="span" speed={50} />
-      <p className={fontStyles}>{"}"}</p>
+    <div className="flex justify-center items-center gap-1.5 text-[7vw] sm:text-[3.25rem] lg:text-[4.75rem] xl:text-[5.5rem] font-extrabold uppercase text-center">
+      <p>{"{"}</p>
+      <TypeAnimation className={cn("text-nowrap")} sequence={[t.headline]} wrapper="p" speed={50} />
+      <p>{"}"}</p>
     </div>
   );
 }
