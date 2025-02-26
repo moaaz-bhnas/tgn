@@ -1,26 +1,30 @@
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { T } from "@/types/i18n";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
-import React from "react";
+import { FaBehance, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 type Props = { t: T; color?: "white" | "black" };
 
 function FollowUs({ t, color = "black" }: Props) {
   const socialLinks = [
     {
-      name: "Linkedin",
-      icon: Linkedin,
+      name: "in",
+      icon: FaLinkedin,
       href: "/",
     },
     {
-      name: "Instagram",
-      icon: Instagram,
+      name: "instagram",
+      icon: FaInstagram,
       href: "/",
     },
     {
-      name: "Facebook",
-      icon: Facebook,
+      name: "facebook",
+      icon: FaFacebook,
+      href: "/",
+    },
+    {
+      name: "behance",
+      icon: FaBehance,
       href: "/",
     },
   ];

@@ -5,7 +5,6 @@ import Logo from "@/app/[locale]/components/logo";
 import { Separator } from "@/components/ui/separator";
 import consts from "@/lib/consts";
 import { trim } from "lodash";
-import { Facebook, Instagram, Linkedin, Mouse } from "lucide-react";
 import StickyBar from "./sticky-bar";
 import { T } from "@/types/i18n";
 import { useWindowScroll } from "@uidotdev/usehooks";
