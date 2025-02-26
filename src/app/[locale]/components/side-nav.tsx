@@ -88,7 +88,7 @@ function SideNav({ t }: Props) {
   return (
     <Sheet>
       <SheetTrigger asChild className="hover:bg-transparent">
-        <Button variant="ghost" className="rounded-full w-20">
+        <Button variant="ghost" className="rounded-full w-20 -me-4">
           <Menu className="!w-full !h-auto" />
           <span className="sr-only">{t.toggle_navigation_menu}</span>
         </Button>

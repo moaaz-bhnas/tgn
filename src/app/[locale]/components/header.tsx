@@ -34,7 +34,9 @@ export default function Header({ t }: { t: T }) {
 
           <Separator className="w-4 bg-black" />
 
-          <a href={`tel:${trim(consts.CONTACT_NUMBER)}`}>{consts.CONTACT_NUMBER}</a>
+          <a dir="ltr" href={`tel:${trim(consts.CONTACT_NUMBER)}`}>
+            {consts.CONTACT_NUMBER}
+          </a>
         </div>
 
         {/* Mouse */}
