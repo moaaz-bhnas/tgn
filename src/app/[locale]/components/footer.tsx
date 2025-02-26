@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Container from "./container";
 import { T } from "@/types/i18n";
-import { Mouse } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -12,9 +11,9 @@ type Props = {
 function Footer({ t }: Props) {
   function renderLogosBar() {
     return (
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center flex-wrap">
         <Image
-          className="w-28 me-auto"
+          className="hidden lg:block w-28 me-auto"
           src={"/images/logos/tgn-3-lines-white.png"}
           alt={"Top Growth Network"}
           width={0}
@@ -22,14 +21,14 @@ function Footer({ t }: Props) {
           sizes="10rem"
         />
 
-        <div className="flex items-center gap-2 absolute">
+        <div className="flex items-center gap-2 lg:absolute">
           <Image className="w-8" src={"/images/icons/diamond-white.png"} alt="" width={0} height={0} sizes="10rem" />
           <p className="font-bold text-4xl">{t.be_different}</p>
           <Image className="w-8" src={"/images/icons/diamond-white.png"} alt="" width={0} height={0} sizes="10rem" />
         </div>
 
         <Image
-          className="w-10 ms-auto"
+          className="hidden lg:block w-10 ms-auto"
           src={"/images/icons/mouse-white.png"}
           alt={"Top Growth Network"}
           width={0}
@@ -99,7 +98,7 @@ function Footer({ t }: Props) {
 
   function renderCopyrightsBar() {
     return (
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <small>{t.copyright}</small>
         <Link className="hover:underline" href={"/"}>
           <small>{t.privacy_terms}</small>
