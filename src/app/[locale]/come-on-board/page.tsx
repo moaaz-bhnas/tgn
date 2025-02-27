@@ -23,7 +23,7 @@ async function ComeOnBoardPage({ params }: { params: Promise<{ locale: Locale }>
       </Container>
 
       <Container>
-        <ComeOnBoardAccordion t={t.accordion} />
+        <ComeOnBoardAccordion t={t.accordion} locale={locale} />
       </Container>
     </div>
   );

@@ -3,10 +3,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import AccordionArticle from "@/components/accordion-article";
 import Bubble from "@/components/bubble";
 import Image from "next/image";
+import Link from "next/link";
+import { Locale } from "@/types/locale";
 
-type Props = { t: T };
+type Props = { t: T; locale: Locale };
 
-function ComeOnBoardAccordion({ t }: Props) {
+function ComeOnBoardAccordion({ t, locale }: Props) {
   const data = [
     {
       title: t.art,
@@ -58,11 +60,11 @@ function ComeOnBoardAccordion({ t }: Props) {
   function renderApplyButton() {
     return (
       <Bubble arrowPosition="right">
-        <button className="py-3 px-4 flex items-center gap-1 font-semibold" type="button">
+        <Link href={`/${locale}/apply`} className="py-3 px-4 flex items-center gap-1 font-semibold" type="button">
           <Image src={"/images/icons/diamond-black.png"} alt="" width={10} height={10} />
           {t.apply_now}
           <Image src={"/images/icons/diamond-black.png"} alt="" width={10} height={10} />
-        </button>
+        </Link>
       </Bubble>
     );
   }
