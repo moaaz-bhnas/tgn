@@ -4,8 +4,6 @@ import { Locale } from "@/types/locale";
 import React from "react";
 import LetsTalkBusiness from "../components/lets-talk-business";
 import ComeOnBoardAccordion from "./components/come-on-board-accordion";
-import Bubble from "@/components/bubble";
-import Image from "next/image";
 import BeWithUs from "./components/be-with-us";
 
 async function ComeOnBoardPage({ params }: { params: Promise<{ locale: Locale }> }) {
