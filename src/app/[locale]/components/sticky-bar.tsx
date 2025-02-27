@@ -27,7 +27,7 @@ function StickyBar({
       className={containerClassName}
     >
       <div
-        className={cn("fixed left-0 right-0 bg-white z-10", isStickyTop ? "top-0" : "bottom-0", className)}
+        className={cn("fixed left-0 right-0 bg-white z-20", isStickyTop ? "top-0" : "bottom-0", className)}
         style={{ height: heightInRems + "rem" }}
       >
         <Container className="!py-0">

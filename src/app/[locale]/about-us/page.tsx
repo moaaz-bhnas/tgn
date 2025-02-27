@@ -2,9 +2,7 @@ import { Locale } from "@/types/locale";
 import Container from "../../../components/container";
 import { getDictionary } from "@/lib/dictionaries";
 import LetsTalkBusiness from "../components/lets-talk-business";
-import TgAccordion from "./components/tg-accordion";
-
-type Props = {};
+import AboutUsAccordion from "./components/about-us-accordion";
 
 async function AboutUsPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -17,7 +15,7 @@ async function AboutUsPage({ params }: { params: Promise<{ locale: Locale }> }) 
       </Container>
 
       <Container>
-        <TgAccordion t={t.accordion} />
+        <AboutUsAccordion t={t.accordion} />
       </Container>
     </div>
   );

@@ -70,5 +70,29 @@
       "team": "Team",
       "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu sem vitae arcu vehicula placerat. Praesent rhoncus nisl quis felis luctus, nec dictum dolor tincidunt."
     }
+  },
+  "come-on-board-page": {
+    "metadata": {
+      "title": "Come on board"
+    },
+    "lets-talk-business": {
+      "headline": "Let's Talk Business"
+    },
+    "accordion": {
+      "art": "Art",
+      "graphic_designer": "Graphic Designer",
+      "pr_team": "PR Team",
+      "branding": "Branding",
+      "media_production": "Media Production",
+      "intership": "Internship",
+      "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu sem vitae arcu vehicula placerat. Praesent rhoncus nisl quis felis luctus, nec dictum dolor tincidunt.",
+      "apply_now": "{Apply Now}"
+    },
+    "be-with-us": {
+      "be_with_us": "be with us",
+      "increase_your_experience": "increase your experience and be different",
+      "we_are_looking": "we are looking",
+      "for_you": "{for you}"
+    }
   }
 }
