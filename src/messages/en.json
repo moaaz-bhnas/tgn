@@ -46,5 +46,29 @@
     "marquee": {
       "text_element": "Grow on purpose"
     }
+  },
+  "about-us-page": {
+    "metadata": {
+      "title": "About Us"
+    },
+    "lets-talk-business": {
+      "headline": "Let's Talk Business"
+    },
+    "accordion": {
+      "our_future": "Our Future",
+      "here_to_help": "Here to help",
+      "who_we_are": "Who We Are",
+      "visinon": "Vision",
+      "mission": "Mission",
+      "objectives": "Objectives",
+      "our_standards": "Our Standards",
+      "criteria": "We help people have those criteria",
+      "expertise": "Expertise",
+      "industry": "Industry",
+      "meet_the_team": "Meet the Team",
+      "board": "Board",
+      "team": "Team",
+      "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu sem vitae arcu vehicula placerat. Praesent rhoncus nisl quis felis luctus, nec dictum dolor tincidunt."
+    }
   }
 }

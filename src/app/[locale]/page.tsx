@@ -1,4 +1,4 @@
-import Container from "./components/container";
+import Container from "../../components/container";
 import LetsTalkBusiness from "./components/lets-talk-business";
 import { Locale } from "@/types/locale";
 import { getDictionary } from "@/lib/dictionaries";
