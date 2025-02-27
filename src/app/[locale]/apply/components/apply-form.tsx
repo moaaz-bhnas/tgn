@@ -16,10 +16,13 @@ const formSchema = z.object({
   lastName: z.string().min(2).max(50),
   email: z.string().email(),
   phone: z.string().min(2).max(50),
-  resume: typeof window === "undefined" ? z.any() : z.instanceof(FileList),
-  portfolio: typeof window === "undefined" ? z.any() : z.instanceof(FileList),
-  website_url: z.string().min(2).max(50),
-  linkedin_url: z.string().min(2).max(50),
+  resume:
+    typeof window === "undefined"
+      ? z.any().refine((file) => file?.length == 1, "File is required.")
+      : z.instanceof(FileList).refine((file) => file?.length == 1, "File is required."),
+  portfolio: typeof window === "undefined" ? z.any() : z.instanceof(FileList).optional(),
+  website_url: z.string().min(2).max(50).optional(),
+  linkedin_url: z.string().min(2).max(50).optional(),
 });
 
 function ApplyForm({ t }: { t: T }) {
@@ -28,7 +31,13 @@ function ApplyForm({ t }: { t: T }) {
     defaultValues: {},
   });
 
-  // 2. Define a submit handler.
+  // File preview
+  const resumeFile = form.watch("resume");
+  const portfolioFiles = form.watch("portfolio");
+
+  const portfolioFileName = portfolioFiles?.length > 0 ? portfolioFiles[0].name : null;
+  const resumeFileName = resumeFile?.length > 0 ? resumeFile[0].name : null;
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
@@ -103,16 +112,18 @@ function ApplyForm({ t }: { t: T }) {
             name="resume"
             render={({ field }) => (
               <FormItem className="sm:col-span-2">
-                <FormLabel className="bg-transparent border-2 rounded-none border-black w-full flex justify-center py-8">
+                <FormLabel className="bg-transparent border-2 rounded-none border-black w-full flex items-center flex-col justify-center py-8 gap-4">
                   <TgCode text={t.resume} />
+
+                  {resumeFileName && <span className="text-muted-foreground">{resumeFileName}</span>}
                 </FormLabel>
                 <FormControl>
                   <Input
                     {...fileRef}
-                    className="sr-only"
+                    className="sr-only w-1"
                     type="file"
                     onChange={(event) => {
-                      field.onChange(event.target?.files?.[0] ?? undefined);
+                      field.onChange(event.target?.files ?? undefined);
                     }}
                   />
                 </FormControl>
@@ -126,18 +137,22 @@ function ApplyForm({ t }: { t: T }) {
             name="portfolio"
             render={({ field }) => (
               <FormItem className="sm:col-span-2">
-                <FormLabel className="bg-transparent border-2 rounded-none border-black w-full flex justify-center py-8 gap-2 items-end">
-                  <small className="text-muted-foreground">{t.only_for_designers}</small>
-                  <TgCode text={t.portfolio} />
-                  <small className="text-muted-foreground">{t.only_for_designers}</small>
+                <FormLabel className="bg-transparent border-2 rounded-none border-black w-full flex flex-col justify-center items-center py-8 gap-4">
+                  <span className="flex gap-2 items-end">
+                    <small className="text-muted-foreground">{t.only_for_designers}</small>
+                    <TgCode text={t.portfolio} />
+                    <small className="text-muted-foreground">{t.only_for_designers}</small>
+                  </span>
+
+                  {portfolioFileName && <span className="text-muted-foreground">{portfolioFileName}</span>}
                 </FormLabel>
                 <FormControl>
                   <Input
                     {...portfolioRef}
-                    className="sr-only"
+                    className="sr-only w-1"
                     type="file"
                     onChange={(event) => {
-                      field.onChange(event.target?.files?.[0] ?? undefined);
+                      field.onChange(event.target?.files ?? undefined);
                     }}
                   />
                 </FormControl>
