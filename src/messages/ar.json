@@ -94,5 +94,26 @@
       "we_are_looking": "نحن نبحث",
       "for_you": "{عنك}"
     }
+  },
+  "apply-page": {
+    "metadata": {
+      "title": "Apply"
+    },
+    "lets-talk-business": {
+      "headline": "حان وقت التغيير!"
+    },
+    "apply-form": {
+      "first_name": "الاسم الأول",
+      "last_name": "اسم العائلة",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "resume": "السيرة الذاتية",
+      "portfolio": "معرض الأعمال",
+      "only_for_designers": "خاص بالمصممين فقط",
+      "website_url": "رابط Behance أو الموقع الإلكتروني",
+      "linkedin_url": "لينكدإن",
+      "designers_execution": "خاص بالمصممين وفريق التنفيذ",
+      "submit": "إرسال"
+    }
   }
 }

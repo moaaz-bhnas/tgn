@@ -94,5 +94,26 @@
       "we_are_looking": "we are looking",
       "for_you": "{for you}"
     }
+  },
+  "apply-page": {
+    "metadata": {
+      "title": "Apply"
+    },
+    "lets-talk-business": {
+      "headline": "Let's Talk Business"
+    },
+    "apply-form": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "resume": "Resume/cv",
+      "portfolio": "Portfolio",
+      "only_for_designers": "Only for designers",
+      "website_url": "Behance or Website Link",
+      "linkedin_url": "Linkedin",
+      "designers_execution": "Only for designers and execution team",
+      "submit": "Submit"
+    }
   }
 }
