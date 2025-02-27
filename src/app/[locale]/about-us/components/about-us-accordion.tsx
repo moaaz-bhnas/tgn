@@ -1,6 +1,6 @@
+import AccordionArticle from "@/components/accordion-article";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { T } from "@/types/i18n";
-import { Separator } from "@radix-ui/react-separator";
 import Image from "next/image";
 
 type Member = {
@@ -10,16 +10,6 @@ type Member = {
 };
 
 type Props = { t: T };
-
-function AccordionArticle({ article }: { article: { title: string; content: string } }) {
-  return (
-    <article className="grid gap-1 sm:grid-cols-4 py-2 sm:p-4">
-      <h3 className="text-xl uppercase">{article.title}</h3>
-      <Separator className="hidden sm:block w-24 h-1 bg-gray-800 mt-3" />
-      <p className="col-span-2">{article.content}</p>
-    </article>
-  );
-}
 
 function TeamSection({ title, team }: { title: string; team: Member[] }) {
   return (
@@ -51,7 +41,7 @@ function TeamSection({ title, team }: { title: string; team: Member[] }) {
   );
 }
 
-function TgAccordion({ t }: Props) {
+function AboutUsAccordion({ t }: Props) {
   const data = [
     {
       title: t.our_future,
@@ -152,4 +142,4 @@ function TgAccordion({ t }: Props) {
   );
 }
 
-export default TgAccordion;
+export default AboutUsAccordion;
