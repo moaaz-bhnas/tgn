@@ -132,5 +132,21 @@
       "story": "Tell us your story",
       "submit": "Submit"
     }
+  },
+  "services-page": {
+    "metadata": {
+      "title": "Services"
+    },
+    "lets-talk-business": {
+      "headline": "Let's Talk Business"
+    },
+    "accordion": {
+      "business_development": "Business Development",
+      "media_production": "Media Production",
+      "marketing": "Marketing",
+      "branding": "Branding",
+      "brand_strategy": "Brand Strategy",
+      "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu sem vitae arcu vehicula placerat. Praesent rhoncus nisl quis felis luctus, nec dictum dolor tincidunt."
+    }
   }
 }
