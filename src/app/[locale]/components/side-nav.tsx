@@ -12,23 +12,27 @@ import { useParams } from "next/navigation";
 import isRtl from "@/lib/is-rtl";
 import { Locale } from "@/types/locale";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 type Props = { t: T };
 
 function SideNav({ t }: Props) {
+  const [open, setOpen] = useState(false);
   const { locale } = useParams();
 
   function renderLogosBar() {
     return (
       <div className="flex items-center justify-between">
-        <Image
-          className="w-28"
-          src={"/images/logos/tgn-3-lines-white.png"}
-          alt={"Top Growth Network"}
-          width={0}
-          height={0}
-          sizes="10rem"
-        />
+        <Link href={`/${locale}/`} onClick={() => setOpen(false)}>
+          <Image
+            className="w-28"
+            src={"/images/logos/tgn-3-lines-white.png"}
+            alt={"Top Growth Network"}
+            width={0}
+            height={0}
+            sizes="10rem"
+          />
+        </Link>
 
         <Image
           className="w-10"
@@ -58,6 +62,7 @@ function SideNav({ t }: Props) {
             <Link
               href={link.href}
               className="rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-800 hover:text-white flex items-center gap-2 max-w-52"
+              onClick={() => setOpen(false)}
             >
               <Image src={"/images/icons/diamond-white.png"} alt={""} width={20} height={20} />
               {link.label}
@@ -86,7 +91,7 @@ function SideNav({ t }: Props) {
   }
 
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild className="hover:bg-transparent">
         <Button variant="ghost" className="rounded-full w-20 -me-4">
           <Menu className="!w-full !h-auto" />
