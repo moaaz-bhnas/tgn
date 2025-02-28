@@ -44,11 +44,11 @@ function SideNav({ t }: Props) {
 
   function renderLinks() {
     const links = [
-      { label: t.about_us, href: "/" },
-      { label: t.contact_us, href: "/" },
-      { label: t.services, href: "/" },
-      { label: t.case_study, href: "/" },
-      { label: t.come_on_board, href: "/" },
+      { label: t.about_us, href: `/${locale}/about-us` },
+      { label: t.contact_us, href: `/${locale}/contact-us` },
+      { label: t.services, href: `/${locale}/services` },
+      { label: t.case_study, href: `/${locale}/case-study` },
+      { label: t.come_on_board, href: `/${locale}/come-on-board` },
     ];
 
     return (

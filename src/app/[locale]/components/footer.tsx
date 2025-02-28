@@ -3,12 +3,14 @@ import Container from "../../../components/container";
 import { T } from "@/types/i18n";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { Locale } from "@/types/locale";
 
 type Props = {
   t: T;
+  locale: Locale;
 };
 
-function Footer({ t }: Props) {
+function Footer({ t, locale }: Props) {
   function renderLogosBar() {
     return (
       <div className="flex items-center justify-center flex-wrap">
@@ -44,26 +46,26 @@ function Footer({ t }: Props) {
       {
         label: t.contact_us,
         links: [
-          { label: t.contact_sales, href: "/" },
-          { label: t.send_feedback, href: "/" },
-          { label: t.who_we_are, href: "/" },
-          { label: t.services, href: "/" },
+          { label: t.contact_sales, href: `/${locale}/contact-us` },
+          { label: t.send_feedback, href: `/${locale}/contact-us` },
+          { label: t.who_we_are, href: `/${locale}/about-us` },
+          { label: t.services, href: `/${locale}/services` },
         ],
       },
       {
         label: t.follow_us,
         links: [
-          { label: t.instagram, href: "/" },
-          { label: t.facebook, href: "/" },
-          { label: t.linkedin, href: "/" },
-          { label: t.behance, href: "/" },
+          { label: t.instagram, href: `/${locale}/` },
+          { label: t.facebook, href: `/${locale}/` },
+          { label: t.linkedin, href: `/${locale}/` },
+          { label: t.behance, href: `/${locale}/` },
         ],
       },
       {
         label: t.come_on_board,
         links: [
-          { label: t.get_interview, href: "/" },
-          { label: t.looking_for, href: "/" },
+          { label: t.get_interview, href: `/${locale}/apply` },
+          { label: t.looking_for, href: `/${locale}/apply` },
         ],
       },
     ];

@@ -52,7 +52,7 @@ export default async function RootLayout({
 
         <main>{children}</main>
 
-        <Footer t={t.footer} />
+        <Footer t={t.footer} locale={locale} />
       </body>
     </html>
   );
