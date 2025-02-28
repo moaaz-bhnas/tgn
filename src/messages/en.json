@@ -148,5 +148,24 @@
       "brand_strategy": "Brand Strategy",
       "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu sem vitae arcu vehicula placerat. Praesent rhoncus nisl quis felis luctus, nec dictum dolor tincidunt."
     }
+  },
+  "expertise-page": {
+    "metadata": {
+      "title": "Expertise"
+    },
+    "lets-talk-business": {
+      "headline": "Let's Talk Business"
+    },
+    "accordion": {
+      "branding": "Branding",
+      "media_production": "Media Production",
+      "socia_media": "Social Media",
+      "website_solutions": "Website Solutions",
+      "brand_strategy": "Brand Strategy",
+      "case_study": "Minimunchi",
+      "brand_identity": "Brand strategy & identity",
+      "see_case_study": "Click to see case study",
+      "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu sem vitae arcu vehicula placerat. Praesent rhoncus nisl quis felis luctus, nec dictum dolor tincidunt."
+    }
   }
 }
