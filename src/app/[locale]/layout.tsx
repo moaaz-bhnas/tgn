@@ -1,31 +1,31 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Sora } from "next/font/google";
 import "../globals.css";
 import { getDictionary } from "@/lib/dictionaries";
 import { Locale } from "@/types/locale";
 import consts from "@/lib/consts";
 import isRtl from "@/lib/is-rtl";
+import Header from "./components/header";
+import Footer from "./components/footer";
+import { cn } from "@/lib/utils";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
 
-export async function generateMetadata({ params }: { params: { locale: Locale } }) {
   const {
-    "marketing-layout": { metadata: dict },
-  } = await getDictionary(params.locale);
+    layout: { metadata: t },
+  } = await getDictionary(locale);
 
   return {
     title: {
-      default: dict.title.default,
-      template: dict.title.template,
+      default: t.title.default,
+      template: t.title.template,
     },
-    description: dict.description,
+    description: t.description,
   };
 }
 
@@ -35,16 +35,25 @@ export async function generateStaticParams() {
   });
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }>) {
+  const { locale } = await params;
+  const { layout: t } = await getDictionary(locale);
+
   return (
-    <html lang={params.locale} dir={isRtl(params.locale) ? "rtl" : "ltr"}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+    <html lang={locale} dir={isRtl(locale) ? "rtl" : "ltr"}>
+      <body className={cn("antialiased", sora.variable, sora.className)}>
+        <Header t={t.header} />
+
+        <main>{children}</main>
+
+        <Footer t={t.footer} locale={locale} />
+      </body>
     </html>
   );
 }

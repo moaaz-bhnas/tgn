@@ -1,0 +1,192 @@
+{
+  "layout": {
+    "metadata": {
+      "title": {
+        "default": "TGN",
+        "template": "%s | TGN"
+      },
+      "description": "اكتشف قوالب التجارة الإلكترونية القابلة للتخصيص المصممة للأداء، إمكانية الوصول، وتحسين محركات البحث. اختر من بين الأنماط Minimalist، Bold & Dynamic، أو Classic لتحسين تجربة متجرك."
+    },
+    "header": {
+      "contact_us": "اتصل بنا",
+      "follow_us": "تابعنا",
+      "toggle_navigation_menu": "فعل قائمة التنقل",
+      "main_nav": "القائمة الرئيسية",
+      "about_us": "من نحن",
+      "case_study": "تجارب ناجحة",
+      "services": "خدماتنا",
+      "come_on_board": "انضم إلينا"
+    },
+    "footer": {
+      "be_different": "كن مختلفًا",
+      "contact_us": "تواصل معنا",
+      "contact_sales": "تحدث مع فريق المبيعات",
+      "send_feedback": "أرسل لنا ملاحظاتك",
+      "who_we_are": "من نحن",
+      "services": "خدماتنا",
+      "follow_us": "تابعنا",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "linkedin": "Linkedin",
+      "behance": "Behance",
+      "come_on_board": "انضم إلينا",
+      "get_interview": "احصل على مقابلة",
+      "looking_for": "عم نبحث؟",
+      "copyright": "© 2025 Top Growth Network. جميع الحقوق محفوظة.",
+      "privacy_terms": "الشروط والاحكام"
+    }
+  },
+  "home-page": {
+    "metadata": {
+      "title": "الرئيسية"
+    },
+    "lets-talk-business": {
+      "headline": "حان وقت التغيير!"
+    },
+    "marquee": {
+      "text_element": "تطور معنا"
+    }
+  },
+  "about-us-page": {
+    "metadata": {
+      "title": "من نحن"
+    },
+    "lets-talk-business": {
+      "headline": "حان وقت التغيير!"
+    },
+    "accordion": {
+      "our_future": "مستقبلنا",
+      "here_to_help": "هنا للمساعدة",
+      "who_we_are": "من نحن",
+      "vision": "الرؤية",
+      "mission": "المهمة",
+      "objectives": "الأهداف",
+      "our_standards": "معاييرنا",
+      "criteria": "نساعد الأشخاص على تحقيق هذه المعايير",
+      "expertise": "الخبرة",
+      "industry": "الصناعة",
+      "meet_the_team": "تعرف على الفريق",
+      "board": "مجلس الإدارة",
+      "team": "الفريق",
+      "lorem_ipsum": "لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إليت. إنتيجر إيو سيم فيتاي أركو فيهيكولا بلاسيرات. برايسنت رونكوس نيسل كويز فيليس لوكتوس، نيك ديكتوم دولور تينسينت."
+    }
+  },
+  "come-on-board-page": {
+    "metadata": {
+      "title": "انضم إلينا"
+    },
+    "lets-talk-business": {
+      "headline": "حان وقت التغيير!"
+    },
+    "accordion": {
+      "art": "الفن",
+      "graphic_designer": "مصمم جرافيك",
+      "pr_team": "فريق العلاقات العامة",
+      "branding": "العلامة التجارية",
+      "media_production": "إنتاج الوسائط",
+      "intership": "التدريب",
+      "lorem_ipsum": "لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينج إليت. إنتيجر إيو سيم فيتاي أركو فيهيكولا بلاسيرات. برازنت رونكوس نيسل كويز فيليس لوكتوس، نيك ديكتوم دولور تينسيدونت.",
+      "apply_now": "{تقدم الان}"
+    },
+    "be-with-us": {
+      "be_with_us": "كن معنا",
+      "increase_your_experience": "زد خبرتك وكن مميزًا",
+      "we_are_looking": "نحن نبحث",
+      "for_you": "{عنك}"
+    }
+  },
+  "apply-page": {
+    "metadata": {
+      "title": "Apply"
+    },
+    "lets-talk-business": {
+      "headline": "حان وقت التغيير!"
+    },
+    "apply-form": {
+      "first_name": "الاسم الأول",
+      "last_name": "اسم العائلة",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "resume": "السيرة الذاتية",
+      "portfolio": "معرض الأعمال",
+      "only_for_designers": "خاص بالمصممين فقط",
+      "website_url": "رابط Behance أو الموقع الإلكتروني",
+      "linkedin_url": "لينكدإن",
+      "designers_execution": "خاص بالمصممين وفريق التنفيذ",
+      "submit": "إرسال"
+    }
+  },
+  "contact-us-page": {
+    "metadata": {
+      "title": "تواصل معنا"
+    },
+    "lets-talk-business": {
+      "headline": "حان وقت التغيير!"
+    },
+    "contact-us-form": {
+      "first_name": "الاسم الأول",
+      "last_name": "اسم العائلة",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "industry": "الصناعة",
+      "story": "أخبرنا قصتك",
+      "submit": "إرسال"
+    }
+  },
+  "services-page": {
+    "metadata": {
+      "title": "خدماتنا"
+    },
+    "lets-talk-business": {
+      "headline": "حان وقت التغيير!"
+    },
+    "accordion": {
+      "business_development": "تطوير الأعمال",
+      "media_production": "إنتاج الوسائط",
+      "marketing": "التسويق",
+      "branding": "العلامة التجارية",
+      "brand_strategy": "استراتيجية العلامة التجارية",
+      "lorem_ipsum": "لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إليت. إنتيجر إيو سيم فيتاي أركو فيهيكولا بلاسيرات. برازنت رونكوس نيسل كويز فيليس لوكتوس، نيك ديكتوم دولور تينكيندات."
+    }
+  },
+  "expertise-page": {
+    "metadata": {
+      "title": "الخبرات"
+    },
+    "lets-talk-business": {
+      "headline": "لنتحدث عن الأعمال"
+    },
+    "accordion": {
+      "branding": "العلامة التجارية",
+      "media_production": "إنتاج الوسائط",
+      "socia_media": "وسائل التواصل الاجتماعي",
+      "website_solutions": "حلول المواقع الإلكترونية",
+      "lorem_ipsum": "لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إليت. إنتيجر إيو سيم فيتاي أركو فيهيكولا بلاسيرات. برازنت رونكوس نيسل كويز فيليس لوكتوس، نيك ديكتوم دولور تينكيندات."
+    }
+  },
+  "accordion": {
+    "branding": "العلامة التجارية",
+    "media_production": "إنتاج الوسائط",
+    "socia_media": "وسائل التواصل الاجتماعي",
+    "website_solutions": "حلول المواقع الإلكترونية",
+    "brand_strategy": "استراتيجية العلامة التجارية",
+    "case_study": "Minimunchi",
+    "brand_identity": "استراتيجية وهوية العلامة التجارية",
+    "see_case_study": "اضغط لرؤية دراسة الحالة",
+    "lorem_ipsum": "لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إليت. إنتيجر إيو سيم فيتاي أركو فيهيكولا بلاسيرات. برازنت رونكوس نيسل كويز فيليس لوكتوس، نيك ديكتوم دولور تينكيندات."
+  },
+  "case-study-page": {
+    "metadata": {
+      "title": "دراسة الحالة"
+    },
+    "case-study": {
+      "title": "Minimunchi",
+      "slogan": "سيكون شعار العلامة التجارية هنا",
+      "identity": "هوية العلامة التجارية واستراتيجيتها",
+      "timeline": "الجدول الزمني",
+      "project_scope": "نطاق المشروع",
+      "problem": "المشكلة",
+      "lorem_ipsum": "لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إليت. إنتيجر إيو سيم فيتاي أركو فيهيكولا بلاسيرات. برازنت رونكوس نيسل كويز فيليس لوكتوس، نيك ديكتوم دولور تينكيندات."
+    }
+  }
+}

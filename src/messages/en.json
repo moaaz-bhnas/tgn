@@ -1,0 +1,185 @@
+{
+  "layout": {
+    "metadata": {
+      "title": {
+        "default": "TGN",
+        "template": "%s | TGN"
+      },
+      "description": "Discover customizable eCommerce themes designed for performance, accessibility, and SEO. Choose Minimalist, Bold & Dynamic, or Classic styles to enhance your store's experience."
+    },
+    "header": {
+      "contact_us": "contact us",
+      "follow_us": "follow us",
+      "toggle_navigation_menu": "Toggle Navigation Menu",
+      "main_nav": "Main Navigation",
+      "about_us": "about us",
+      "case_study": "case study",
+      "services": "services",
+      "come_on_board": "come on board"
+    },
+    "footer": {
+      "be_different": "be different",
+      "contact_us": "contact us",
+      "contact_sales": "Speak to our sales team",
+      "send_feedback": "send us a feedback",
+      "who_we_are": "who we are",
+      "services": "services",
+      "follow_us": "follow us",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "linkedin": "Linkedin",
+      "behance": "Behance",
+      "come_on_board": "come on board",
+      "get_interview": "get an interview",
+      "looking_for": "What are we looking for?",
+      "copyright": "© 2025 Top Growth Network. All Rights Reserved.",
+      "privacy_terms": "Privacy & Terms"
+    }
+  },
+  "home-page": {
+    "metadata": {
+      "title": "Home"
+    },
+    "lets-talk-business": {
+      "headline": "Let's Talk Business"
+    },
+    "marquee": {
+      "text_element": "Grow on purpose"
+    }
+  },
+  "about-us-page": {
+    "metadata": {
+      "title": "About Us"
+    },
+    "lets-talk-business": {
+      "headline": "Let's Talk Business"
+    },
+    "accordion": {
+      "our_future": "Our Future",
+      "here_to_help": "Here to help",
+      "who_we_are": "Who We Are",
+      "visinon": "Vision",
+      "mission": "Mission",
+      "objectives": "Objectives",
+      "our_standards": "Our Standards",
+      "criteria": "We help people have those criteria",
+      "expertise": "Expertise",
+      "industry": "Industry",
+      "meet_the_team": "Meet the Team",
+      "board": "Board",
+      "team": "Team",
+      "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu sem vitae arcu vehicula placerat. Praesent rhoncus nisl quis felis luctus, nec dictum dolor tincidunt."
+    }
+  },
+  "come-on-board-page": {
+    "metadata": {
+      "title": "Come on board"
+    },
+    "lets-talk-business": {
+      "headline": "Let's Talk Business"
+    },
+    "accordion": {
+      "art": "Art",
+      "graphic_designer": "Graphic Designer",
+      "pr_team": "PR Team",
+      "branding": "Branding",
+      "media_production": "Media Production",
+      "intership": "Internship",
+      "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu sem vitae arcu vehicula placerat. Praesent rhoncus nisl quis felis luctus, nec dictum dolor tincidunt.",
+      "apply_now": "{Apply Now}"
+    },
+    "be-with-us": {
+      "be_with_us": "be with us",
+      "increase_your_experience": "increase your experience and be different",
+      "we_are_looking": "we are looking",
+      "for_you": "{for you}"
+    }
+  },
+  "apply-page": {
+    "metadata": {
+      "title": "Apply"
+    },
+    "lets-talk-business": {
+      "headline": "Let's Talk Business"
+    },
+    "apply-form": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "resume": "Resume/cv",
+      "portfolio": "Portfolio",
+      "only_for_designers": "Only for designers",
+      "website_url": "Behance or Website Link",
+      "linkedin_url": "Linkedin",
+      "designers_execution": "Only for designers and execution team",
+      "submit": "Submit"
+    }
+  },
+  "contact-us-page": {
+    "metadata": {
+      "title": "Contact Us"
+    },
+    "lets-talk-business": {
+      "headline": "Let's Talk Business"
+    },
+    "contact-us-form": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "industry": "Industry",
+      "story": "Tell us your story",
+      "submit": "Submit"
+    }
+  },
+  "services-page": {
+    "metadata": {
+      "title": "Services"
+    },
+    "lets-talk-business": {
+      "headline": "Let's Talk Business"
+    },
+    "accordion": {
+      "business_development": "Business Development",
+      "media_production": "Media Production",
+      "marketing": "Marketing",
+      "branding": "Branding",
+      "brand_strategy": "Brand Strategy",
+      "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu sem vitae arcu vehicula placerat. Praesent rhoncus nisl quis felis luctus, nec dictum dolor tincidunt."
+    }
+  },
+  "expertise-page": {
+    "metadata": {
+      "title": "Expertise"
+    },
+    "lets-talk-business": {
+      "headline": "Let's Talk Business"
+    },
+    "accordion": {
+      "branding": "Branding",
+      "media_production": "Media Production",
+      "socia_media": "Social Media",
+      "website_solutions": "Website Solutions",
+      "brand_strategy": "Brand Strategy",
+      "case_study": "Minimunchi",
+      "brand_identity": "Brand strategy & identity",
+      "see_case_study": "Click to see case study",
+      "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu sem vitae arcu vehicula placerat. Praesent rhoncus nisl quis felis luctus, nec dictum dolor tincidunt."
+    }
+  },
+  "case-study-page": {
+    "metadata": {
+      "title": "Case Study"
+    },
+    "case-study": {
+      "title": "Minimunchi",
+      "slogan": "Brand Slogan will be here",
+      "identity": "Brand identity & brand strategy",
+      "timeline": "Timeline",
+      "project_scope": "Project Scope",
+      "problem": "Problem",
+      "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu sem vitae arcu vehicula placerat. Praesent rhoncus nisl quis felis luctus, nec dictum dolor tincidunt."
+    }
+  }
+}
