@@ -167,5 +167,19 @@
       "see_case_study": "Click to see case study",
       "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu sem vitae arcu vehicula placerat. Praesent rhoncus nisl quis felis luctus, nec dictum dolor tincidunt."
     }
+  },
+  "case-study-page": {
+    "metadata": {
+      "title": "Case Study"
+    },
+    "case-study": {
+      "title": "Minimunchi",
+      "slogan": "Brand Slogan will be here",
+      "identity": "Brand identity & brand strategy",
+      "timeline": "Timeline",
+      "project_scope": "Project Scope",
+      "problem": "Problem",
+      "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu sem vitae arcu vehicula placerat. Praesent rhoncus nisl quis felis luctus, nec dictum dolor tincidunt."
+    }
   }
 }
