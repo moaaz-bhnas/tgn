@@ -12,11 +12,12 @@ import { cn } from "@/lib/utils";
 import SideNav from "./side-nav";
 import FollowUs from "./follow-us";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 export default function Header({ t }: { t: T }) {
   const [{ y }] = useWindowScroll();
   const pathname = usePathname();
+  const { locale } = useParams();
 
   const isHomePage = pathname.split("/").filter(Boolean).length === 1;
 
@@ -33,7 +34,7 @@ export default function Header({ t }: { t: T }) {
     >
       <nav className="h-full flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href={`/${locale}`} className="flex items-center gap-2">
           <Logo />
         </Link>
 
