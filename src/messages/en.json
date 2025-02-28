@@ -115,5 +115,22 @@
       "designers_execution": "Only for designers and execution team",
       "submit": "Submit"
     }
+  },
+  "contact-us-page": {
+    "metadata": {
+      "title": "Contact Us"
+    },
+    "lets-talk-business": {
+      "headline": "Let's Talk Business"
+    },
+    "contact-us-form": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "industry": "Industry",
+      "story": "Tell us your story",
+      "submit": "Submit"
+    }
   }
 }
