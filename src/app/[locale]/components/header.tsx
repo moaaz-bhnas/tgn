@@ -1,41 +1,22 @@
-"use client";
-
 import Link from "next/link";
 import Logo from "@/app/[locale]/components/logo";
 import { Separator } from "@/components/ui/separator";
 import consts from "@/lib/consts";
 import { trim } from "lodash";
-import StickyBar from "./sticky-bar";
 import { T } from "@/types/i18n";
-import { useWindowScroll } from "@uidotdev/usehooks";
-import { cn } from "@/lib/utils";
 import SideNav from "./side-nav";
 import FollowUs from "./follow-us";
 import Image from "next/image";
-import { useParams, usePathname } from "next/navigation";
+import { Locale } from "@/types/locale";
+import StickyBarWrapper from "./sticky-bar-wrapper";
 
-export default function Header({ t }: { t: T }) {
-  const [{ y }] = useWindowScroll();
-  const pathname = usePathname();
-  const { locale } = useParams();
-
-  const isHomePage = pathname.split("/").filter(Boolean).length === 1;
-
+export default function Header({ t, locale }: { t: T; locale: Locale }) {
   return (
-    <StickyBar
-      isStickyTop
-      containerClassName={isHomePage ? "bg-tgred" : "bg-tggrey"}
-      className={cn(
-        "transition",
-        isHomePage ? "bg-tgred" : "bg-tggrey",
-        y && y > 0 ? "backdrop-blur shadow-sm" : "",
-        y && y > 0 ? (isHomePage ? "bg-tgred/90" : "bg-tggrey/90") : ""
-      )}
-    >
+    <StickyBarWrapper>
       <nav className="h-full flex items-center justify-between">
         {/* Logo */}
         <Link href={`/${locale}`} className="flex items-center gap-2">
-          <Logo />
+          <Logo locale={locale} />
         </Link>
 
         {/* Contact Us "Desktop" */}
@@ -54,11 +35,11 @@ export default function Header({ t }: { t: T }) {
 
         {/* Follow Us "Desktop" */}
         <div className="hidden lg:block">
-          <FollowUs t={t} />
+          <FollowUs t={t} locale={locale} />
         </div>
 
-        <SideNav t={t} />
+        <SideNav t={t} locale={locale} />
       </nav>
-    </StickyBar>
+    </StickyBarWrapper>
   );
 }

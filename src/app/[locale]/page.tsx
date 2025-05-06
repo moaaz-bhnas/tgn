@@ -20,7 +20,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       </div>
 
       <Container>
-        <Banner />
+        <Banner locale={locale} />
       </Container>
 
       <Marquee t={t["marquee"]} direction={isRtl(locale) ? "right" : "left"} />

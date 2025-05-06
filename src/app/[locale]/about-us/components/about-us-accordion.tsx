@@ -2,6 +2,8 @@ import AccordionArticle from "@/components/accordion-article";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { T } from "@/types/i18n";
 import Image from "next/image";
+import { createApi } from "@/lib/api";
+import { Locale } from "@/types/locale";
 
 type Member = {
   name: string;
@@ -9,7 +11,10 @@ type Member = {
   avatar: string;
 };
 
-type Props = { t: T };
+type Props = {
+  t: T;
+  locale: Locale;
+};
 
 function TeamSection({ title, team }: { title: string; team: Member[] }) {
   return (
@@ -41,14 +46,18 @@ function TeamSection({ title, team }: { title: string; team: Member[] }) {
   );
 }
 
-function AboutUsAccordion({ t }: Props) {
+async function AboutUsAccordion({ t, locale }: Props) {
+  const api = createApi({ language: locale });
+  const settings = await api.getSettings();
+  const { who_we_are, our_future } = settings.message;
+
   const data = [
     {
       title: t.our_future,
       articles: [
         {
           title: t.here_to_help,
-          content: t.lorem_ipsum,
+          content: our_future.here_to_help_content || t.lorem_ipsum,
         },
       ],
     },
@@ -57,15 +66,15 @@ function AboutUsAccordion({ t }: Props) {
       articles: [
         {
           title: t.visinon,
-          content: t.lorem_ipsum,
+          content: who_we_are.vision_content || t.lorem_ipsum,
         },
         {
           title: t.mission,
-          content: t.lorem_ipsum,
+          content: who_we_are.mission_content || t.lorem_ipsum,
         },
         {
           title: t.objectives,
-          content: t.lorem_ipsum,
+          content: who_we_are.objectives_content || t.lorem_ipsum,
         },
       ],
     },

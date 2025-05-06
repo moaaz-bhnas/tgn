@@ -1,5 +1,16 @@
 import { ApiClient } from "./client";
-import { Category, ListParams, PaginatedResponse, Project, Service, Team, Work, ApiResponse, Settings } from "./types";
+import {
+  Category,
+  ListParams,
+  PaginatedResponse,
+  Project,
+  Service,
+  Team,
+  Work,
+  ApiResponse,
+  Settings,
+  CategoriesResponse,
+} from "./types";
 
 export class ApiEndpoints {
   private client: ApiClient;
@@ -19,7 +30,7 @@ export class ApiEndpoints {
 
   // Categories
   async getCategories(params?: ListParams) {
-    return this.client.get<Category[]>("/api/v1/categories", params);
+    return this.client.get<CategoriesResponse>("/api/v1/categories", params);
   }
 
   // Languages

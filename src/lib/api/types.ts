@@ -16,33 +16,125 @@ export interface PaginatedResponse<T> {
   };
 }
 
+export type CategoryType = "Service" | "Work" | "Project";
+
+export type Translation = {
+  id: number;
+  locale: string;
+  name: string;
+};
+
+export type ServiceTranslation = {
+  id: number;
+  service_id: number;
+  locale: string;
+  title: string;
+  description: string;
+};
+
 export interface Category {
   id: number;
+  type: CategoryType;
+  created_at: string;
+  updated_at: string;
   name: string;
-  type: string;
+  translations: Translation[];
+  services: Service[];
+  projects: Project[];
+  works: Work[];
 }
 
-export interface Upload {
+export type Upload = {
   id: number;
+  title: string;
   path: string;
+  size: string;
   type: string;
-}
+  extension: string;
+  user_id: number;
+  external_link: string;
+  created_at: string;
+  updated_at: string;
+};
+
+export type ProjectTranslation = {
+  id: number;
+  project_id: number;
+  locale: string;
+  title: string;
+  description: string;
+  item_attributes: Record<string, string> | null;
+};
 
 export interface Project {
   id: number;
-  slug: string;
   category_id: number;
-  thumbnail_img: string;
-  images: string[];
+  slug: string;
   meta_keywords: string;
   meta_description: string;
-  link: string;
+  images: string;
+  thumbnail_img: string;
+  link: string | null;
   featured: number;
   active: number;
+  created_at: string;
+  updated_at: string;
   title: string;
   description: string;
-  category: Category;
-  thumbnail: Upload;
+  item_attributes: Record<string, string> | null;
+  thumbnail: {
+    id: number;
+    title: string;
+    path: string;
+    size: string;
+    type: string;
+    extension: string;
+    user_id: number;
+    external_link: string;
+    created_at: string;
+    updated_at: string;
+  } | null;
+  translations: ProjectTranslation[];
+}
+
+export type WorkTranslation = {
+  id: number;
+  work_id: number;
+  locale: string;
+  title: string;
+  description: string;
+  item_attributes: Record<string, string> | null;
+};
+
+export interface Work {
+  id: number;
+  category_id: number;
+  slug: string;
+  meta_keywords: string;
+  meta_description: string;
+  images: string;
+  thumbnail_img: string;
+  link: string | null;
+  featured: number;
+  active: number;
+  created_at: string;
+  updated_at: string;
+  title: string;
+  description: string;
+  item_attributes: Record<string, string> | null;
+  thumbnail: {
+    id: number;
+    title: string;
+    path: string;
+    size: string;
+    type: string;
+    extension: string;
+    user_id: number;
+    external_link: string;
+    created_at: string;
+    updated_at: string;
+  } | null;
+  translations: WorkTranslation[];
 }
 
 export interface Service {
@@ -52,9 +144,11 @@ export interface Service {
   meta_description: string;
   featured: number;
   active: number;
+  created_at: string;
+  updated_at: string;
   title: string;
   description: string;
-  category: Category;
+  translations: ServiceTranslation[];
 }
 
 export interface Team {
@@ -65,23 +159,6 @@ export interface Team {
   image: string;
   created_at: string;
   updated_at: string;
-}
-
-export interface Work {
-  id: number;
-  slug: string;
-  category_id: number;
-  thumbnail_img: string;
-  images: string[];
-  meta_keywords: string;
-  meta_description: string;
-  link: string;
-  featured: boolean;
-  active: boolean;
-  title: string;
-  description: string;
-  item_attributes: string;
-  category: Category;
 }
 
 export interface ApiConfig {
@@ -101,7 +178,7 @@ export type ListParams = {
 };
 
 export interface Settings {
-  site_logo: string | null;
+  site_logo: Upload | null;
   site_favicon: string | null;
   footer_logo: string | null;
   site_title: string;
@@ -117,8 +194,10 @@ export interface Settings {
     tiktok_link: string | null;
     threads_link: string | null;
     youtube_link: string | null;
+    linkedin_link: string | null;
+    behance_link: string | null;
   };
-  home_slider_image: string | null;
+  home_slider_image: Upload | null;
   who_we_are: {
     vision_content: string | null;
     mission_content: string | null;
@@ -128,3 +207,12 @@ export interface Settings {
     here_to_help_content: string | null;
   };
 }
+
+export type CategoriesResponse = {
+  success: boolean;
+  status_code: number;
+  message: null;
+  data: {
+    categories: Category[];
+  };
+};
