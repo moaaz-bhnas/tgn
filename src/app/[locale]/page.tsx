@@ -26,7 +26,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <Marquee t={t["marquee"]} direction={isRtl(locale) ? "right" : "left"} />
 
       <Container>
-        <Projects />
+        <Projects locale={locale} />
       </Container>
 
       <Marquee t={t["marquee"]} direction={isRtl(locale) ? "right" : "left"} />

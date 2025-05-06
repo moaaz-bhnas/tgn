@@ -2,18 +2,12 @@ export interface ApiResponse<T> {
   success: boolean;
   status_code: number;
   message: T;
-  data: string;
+  data: T;
 }
 
 export interface PaginatedResponse<T> {
-  message: string;
-  data: {
-    current_page: number;
-    last_page: number;
-    per_page: number;
-    total: number;
-    data: T[];
-  };
+  current_page: number;
+  data: T[];
 }
 
 export type CategoryType = "Service" | "Work" | "Project";
@@ -209,10 +203,5 @@ export interface Settings {
 }
 
 export type CategoriesResponse = {
-  success: boolean;
-  status_code: number;
-  message: null;
-  data: {
-    categories: Category[];
-  };
+  categories: Category[];
 };

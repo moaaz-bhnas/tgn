@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Logo from "@/app/[locale]/components/logo";
 import { Separator } from "@/components/ui/separator";
-import consts from "@/lib/consts";
 import { trim } from "lodash";
 import { T } from "@/types/i18n";
 import SideNav from "./side-nav";
@@ -9,8 +8,12 @@ import FollowUs from "./follow-us";
 import Image from "next/image";
 import { Locale } from "@/types/locale";
 import StickyBarWrapper from "./sticky-bar-wrapper";
+import { createApi } from "@/lib/api";
 
-export default function Header({ t, locale }: { t: T; locale: Locale }) {
+export default async function Header({ t, locale }: { t: T; locale: Locale }) {
+  const api = createApi({ language: locale });
+  const settings = await api.getSettings();
+
   return (
     <StickyBarWrapper>
       <nav className="h-full flex items-center justify-between">
@@ -25,8 +28,8 @@ export default function Header({ t, locale }: { t: T; locale: Locale }) {
 
           <Separator className="w-4 bg-black" />
 
-          <a dir="ltr" href={`tel:${trim(consts.CONTACT_NUMBER)}`}>
-            {consts.CONTACT_NUMBER}
+          <a dir="ltr" href={`tel:${trim(settings.message.contact_phone)}`}>
+            {settings.message.contact_phone}
           </a>
         </div>
 

@@ -1,89 +1,28 @@
-import { T } from "@/types/i18n";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Category } from "@/lib/api/types";
 import AccordionArticle from "@/components/accordion-article";
+import { T } from "@/types/i18n";
 
-type Props = { t: T };
+type Props = {
+  t: T;
+  categories: Category[];
+};
 
-function ServicesAccordion({ t }: Props) {
-  const data = [
-    {
-      title: t.business_development,
-      articles: [
-        {
-          title: t.brand_strategy,
-          content: t.lorem_ipsum,
-        },
-        {
-          title: t.brand_strategy,
-          content: t.lorem_ipsum,
-        },
-        {
-          title: t.brand_strategy,
-          content: t.lorem_ipsum,
-        },
-      ],
-    },
-    {
-      title: t.media_production,
-      articles: [
-        {
-          title: t.brand_strategy,
-          content: t.lorem_ipsum,
-        },
-        {
-          title: t.brand_strategy,
-          content: t.lorem_ipsum,
-        },
-        {
-          title: t.brand_strategy,
-          content: t.lorem_ipsum,
-        },
-      ],
-    },
-    {
-      title: t.marketing,
-      articles: [
-        {
-          title: t.brand_strategy,
-          content: t.lorem_ipsum,
-        },
-        {
-          title: t.brand_strategy,
-          content: t.lorem_ipsum,
-        },
-        {
-          title: t.brand_strategy,
-          content: t.lorem_ipsum,
-        },
-      ],
-    },
-    {
-      title: t.branding,
-      articles: [
-        {
-          title: t.brand_strategy,
-          content: t.lorem_ipsum,
-        },
-        {
-          title: t.brand_strategy,
-          content: t.lorem_ipsum,
-        },
-        {
-          title: t.brand_strategy,
-          content: t.lorem_ipsum,
-        },
-      ],
-    },
-  ];
-
+function ServicesAccordion({ t, categories }: Props) {
   return (
     <Accordion className="divide-y divide-gray-800" type="single" collapsible>
-      {data.map((item) => (
-        <AccordionItem key={item.title} value={item.title}>
-          <AccordionTrigger className="text-2xl uppercase hover:no-underline">{item.title}</AccordionTrigger>
+      {categories.map((category) => (
+        <AccordionItem key={category.id} value={category.name}>
+          <AccordionTrigger className="text-2xl uppercase hover:no-underline">{category.name}</AccordionTrigger>
           <AccordionContent>
-            {item.articles.map((article) => (
-              <AccordionArticle key={article.title} article={article} />
+            {category.services.map((service) => (
+              <AccordionArticle
+                key={service.id}
+                article={{
+                  title: service.title,
+                  content: service.description,
+                }}
+              />
             ))}
           </AccordionContent>
         </AccordionItem>

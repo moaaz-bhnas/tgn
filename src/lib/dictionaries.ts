@@ -6,7 +6,5 @@ const dictionaries = {
 };
 
 export async function getDictionary(locale: "en" | "ar") {
-  console.log("✨✨", { dictionaries, locale });
-
   return dictionaries[locale]();
 }
