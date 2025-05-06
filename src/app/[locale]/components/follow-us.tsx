@@ -18,9 +18,9 @@ async function FollowUs({ t, color = "black", locale }: Props) {
 
   const socialLinks = [
     {
-      name: "youtube",
-      icon: FaYoutube,
-      href: links_social.youtube_link,
+      name: "behance",
+      icon: FaBehance,
+      href: links_social.behance_link,
     },
     {
       name: "instagram",
@@ -33,9 +33,9 @@ async function FollowUs({ t, color = "black", locale }: Props) {
       href: links_social.facebook_link,
     },
     {
-      name: "tiktok",
-      icon: FaTiktok,
-      href: links_social.tiktok_link,
+      name: "linkedin",
+      icon: FaLinkedin,
+      href: links_social.linkedin_link,
     },
   ];
 
