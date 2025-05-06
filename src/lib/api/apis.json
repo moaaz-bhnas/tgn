@@ -1,0 +1,1105 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Top Growth Network API",
+    "description": "API documentation for Top Growth Network",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/careers": {
+      "get": {
+        "tags": ["Front Career"],
+        "summary": "Get list of careers",
+        "operationId": "bb571fd0ca25c9189a5782a7a4a23fd3",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search by title, description, or meta",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "description": "Select fields title, description, etc.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Number of records per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "Specify language (e.g., en, ar)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "properties": {
+                        "current_page": {
+                          "type": "integer"
+                        },
+                        "last_page": {
+                          "type": "integer"
+                        },
+                        "per_page": {
+                          "type": "integer"
+                        },
+                        "total": {
+                          "type": "integer"
+                        },
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/careers/{career_slug}": {
+      "get": {
+        "tags": ["Front Career"],
+        "summary": "Get details of a specific career",
+        "operationId": "2ca3f9ec74fa4663ebe6879335129ea5",
+        "parameters": [
+          {
+            "name": "career_slug",
+            "in": "path",
+            "description": "Career Slug",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found"
+          }
+        }
+      }
+    },
+    "/api/v1/categories": {
+      "get": {
+        "tags": ["Front Category"],
+        "summary": "Get list of categories",
+        "operationId": "72ca35cffb0a53a4e9689a3e919c6ae0",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search by name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Select type: Service, Project, or Work",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "description": "Select fields for category (e.g., name,type)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "service_select",
+            "in": "query",
+            "description": "Select fields for services (e.g., id,name)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "project_select",
+            "in": "query",
+            "description": "Select fields for projects (e.g., id,title)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "work_select",
+            "in": "query",
+            "description": "Select fields for works (e.g., id,description)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "Specify language (e.g., en, ar)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/languages": {
+      "get": {
+        "tags": ["Front Languages"],
+        "summary": "Swap Languages",
+        "operationId": "c3c2c92d9ff46ec89c631ad507d06b65",
+        "parameters": [
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "Specify language (e.g., en, ar)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/projects": {
+      "get": {
+        "tags": ["Front Project"],
+        "summary": "Get list of project",
+        "operationId": "777326f9d9b648c3a1b74db9b210360f",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search by title, description, or meta",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "featured",
+            "in": "query",
+            "description": "1 or 0",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "description": "Select fields title, description, etc.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Number of records per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "Specify language (e.g., en, ar)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "properties": {
+                        "current_page": {
+                          "type": "integer"
+                        },
+                        "last_page": {
+                          "type": "integer"
+                        },
+                        "per_page": {
+                          "type": "integer"
+                        },
+                        "total": {
+                          "type": "integer"
+                        },
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/projects/{project_slug}": {
+      "get": {
+        "tags": ["Front Project"],
+        "summary": "Get details of a specific project",
+        "operationId": "dfcc3db90027f690802c0ac209838d95",
+        "parameters": [
+          {
+            "name": "project_slug",
+            "in": "path",
+            "description": "Project Slug",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found"
+          }
+        }
+      }
+    },
+    "/api/v1/services": {
+      "get": {
+        "tags": ["Front Service"],
+        "summary": "Get list of services",
+        "operationId": "530021936f4176858f9ecd4fa8f122b4",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search by title, description, or meta",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "featured",
+            "in": "query",
+            "description": "1 or 0",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "description": "Select fields title, description, etc.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Number of records per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "Specify language (e.g., en, ar)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "properties": {
+                        "current_page": {
+                          "type": "integer"
+                        },
+                        "last_page": {
+                          "type": "integer"
+                        },
+                        "per_page": {
+                          "type": "integer"
+                        },
+                        "total": {
+                          "type": "integer"
+                        },
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/settings": {
+      "get": {
+        "tags": ["Front Settings"],
+        "summary": "Get All Settings",
+        "operationId": "7ecea40f327a584e4ea9e4e864fe2c02",
+        "parameters": [
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "Specify language (e.g., en, ar)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/teams": {
+      "get": {
+        "tags": ["Front Team"],
+        "summary": "Get list of team",
+        "operationId": "26fd9e6de0d4192dfb821362714abad9",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search by name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "select type Board or Team",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "description": "select fields name, type, etc",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "Specify language (e.g., en, ar)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/works": {
+      "get": {
+        "tags": ["Front Work"],
+        "summary": "Get list of works",
+        "operationId": "222cbe548762cba90ccab93219c72aa8",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search by title, description, or meta",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "featured",
+            "in": "query",
+            "description": "1 or 0",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "description": "Select fields title, description, etc.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Number of records per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "X-Language",
+            "in": "header",
+            "description": "Specify language (e.g., en, ar)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "properties": {
+                        "current_page": {
+                          "type": "integer"
+                        },
+                        "last_page": {
+                          "type": "integer"
+                        },
+                        "per_page": {
+                          "type": "integer"
+                        },
+                        "total": {
+                          "type": "integer"
+                        },
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/works/{work_slug}": {
+      "get": {
+        "tags": ["Front Work"],
+        "summary": "Get details of a specific work",
+        "operationId": "aefc4aa91b5d8302bb912f208fddfe0a",
+        "parameters": [
+          {
+            "name": "work_slug",
+            "in": "path",
+            "description": "Work Slug",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Category": {
+        "title": "Category",
+        "description": "Category model",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Web Development"
+          },
+          "type": {
+            "type": "string",
+            "example": "Service"
+          }
+        },
+        "type": "object"
+      },
+      "Project": {
+        "title": "Project",
+        "description": "Project model",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "slug": {
+            "type": "string",
+            "example": "project-slug"
+          },
+          "category_id": {
+            "type": "integer",
+            "example": 2
+          },
+          "thumbnail_img": {
+            "type": "string",
+            "example": "uploads/thumbnail.png"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ["img1.jpg", "img2.jpg"]
+          },
+          "meta_keywords": {
+            "type": "string",
+            "example": "Laravel, API, Project"
+          },
+          "meta_description": {
+            "type": "string",
+            "example": "This is a sample project description"
+          },
+          "link": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "featured": {
+            "type": "integer",
+            "example": 1
+          },
+          "active": {
+            "type": "integer",
+            "example": 1
+          },
+          "title": {
+            "type": "string",
+            "example": "Project Title"
+          },
+          "description": {
+            "type": "string",
+            "example": "Project detailed description"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "thumbnail": {
+            "$ref": "#/components/schemas/Upload"
+          }
+        },
+        "type": "object"
+      },
+      "Service": {
+        "title": "Service",
+        "description": "Service model",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "category_id": {
+            "type": "integer",
+            "example": 2
+          },
+          "meta_keywords": {
+            "type": "string",
+            "example": "Laravel, API, Service"
+          },
+          "meta_description": {
+            "type": "string",
+            "example": "This is a sample service description"
+          },
+          "featured": {
+            "type": "integer",
+            "example": 1
+          },
+          "active": {
+            "type": "integer",
+            "example": 1
+          },
+          "title": {
+            "type": "string",
+            "example": "Service Title"
+          },
+          "description": {
+            "type": "string",
+            "example": "Detailed description of the service"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          }
+        },
+        "type": "object"
+      },
+      "Team": {
+        "title": "Team",
+        "description": "Team model",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "job_title": {
+            "type": "string",
+            "example": "Senior Developer"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["Board", "Team"],
+            "example": "Team"
+          },
+          "image": {
+            "type": "string",
+            "example": "uploads/team-member.jpg"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-03-15T12:00:00Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-03-15T12:00:00Z"
+          }
+        },
+        "type": "object"
+      },
+      "Upload": {
+        "title": "Upload",
+        "description": "File Upload model",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "path": {
+            "type": "string",
+            "example": "uploads/image.jpg"
+          },
+          "type": {
+            "type": "string",
+            "example": "image"
+          }
+        },
+        "type": "object"
+      },
+      "Work": {
+        "title": "Work",
+        "description": "Work model",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "slug": {
+            "type": "string",
+            "example": "unique-work-slug"
+          },
+          "category_id": {
+            "type": "integer",
+            "example": 2
+          },
+          "thumbnail_img": {
+            "type": "string",
+            "example": "uploads/work-thumbnail.jpg"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ["image1.jpg", "image2.jpg"]
+          },
+          "meta_keywords": {
+            "type": "string",
+            "example": "Work, Portfolio"
+          },
+          "meta_description": {
+            "type": "string",
+            "example": "This is a portfolio work item"
+          },
+          "link": {
+            "type": "string",
+            "example": "https://example.com/work"
+          },
+          "featured": {
+            "type": "boolean",
+            "example": true
+          },
+          "active": {
+            "type": "boolean",
+            "example": true
+          },
+          "title": {
+            "type": "string",
+            "example": "Work Title"
+          },
+          "description": {
+            "type": "string",
+            "example": "Detailed description of the work"
+          },
+          "item_attributes": {
+            "type": "string",
+            "example": "Extra attributes"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "parameters": {
+      "acceptHeader": {
+        "name": "Accept",
+        "in": "header",
+        "description": "Accept JSON response",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "default": "application/json"
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "bearerFormat": "JWT",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Dashboard Auth",
+      "description": "Dashboard Auth"
+    },
+    {
+      "name": "Dashboard Staff",
+      "description": "Dashboard Staff"
+    },
+    {
+      "name": "Front Career",
+      "description": "Front Career"
+    },
+    {
+      "name": "Front Category",
+      "description": "Front Category"
+    },
+    {
+      "name": "Front Languages",
+      "description": "Front Languages"
+    },
+    {
+      "name": "Front Project",
+      "description": "Front Project"
+    },
+    {
+      "name": "Front Service",
+      "description": "Front Service"
+    },
+    {
+      "name": "Front Settings",
+      "description": "Front Settings"
+    },
+    {
+      "name": "Front Team",
+      "description": "Front Team"
+    },
+    {
+      "name": "Front Work",
+      "description": "Front Work"
+    }
+  ],
+  "security": [
+    {
+      "jwt": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  ]
+}
