@@ -1,11 +1,12 @@
 import Container from "@/components/container";
+import { Project } from "@/lib/api/types";
 import { T } from "@/types/i18n";
 import Image from "next/image";
 import React from "react";
 
-type Props = { t: T };
+type Props = { t: T; project: Project };
 
-function CaseStudyArticle({ t }: Props) {
+function CaseStudyArticle({ t, project }: Props) {
   const subArticles = [
     { title: t.timeline, body: t.lorem_ipsum },
     { title: t.project_scope, body: t.lorem_ipsum },

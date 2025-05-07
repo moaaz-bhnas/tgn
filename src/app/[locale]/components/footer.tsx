@@ -4,20 +4,25 @@ import { T } from "@/types/i18n";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Locale } from "@/types/locale";
+import { createApi } from "@/lib/api";
+import { getFullPath } from "@/lib/utils";
 
 type Props = {
   t: T;
   locale: Locale;
 };
 
-function Footer({ t, locale }: Props) {
+async function Footer({ t, locale }: Props) {
+  const api = createApi({ language: locale });
+  const settings = await api.getSettings();
+
   function renderLogosBar() {
     return (
       <div className="flex items-center justify-center flex-wrap">
         <Image
           className="hidden lg:block w-28 me-auto"
-          src={"/images/logos/tgn-3-lines-white.png"}
-          alt={"Top Growth Network"}
+          src={getFullPath(settings.message.footer_logo?.path) || "/images/logos/tgn-3-lines-white.png"}
+          alt={settings.message.footer_logo?.title || "Top Growth Network"}
           width={0}
           height={0}
           sizes="10rem"

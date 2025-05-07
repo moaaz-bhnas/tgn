@@ -1,10 +1,10 @@
-import Image from "next/image";
 import { createApi } from "@/lib/api";
-import { getFullPath } from "@/lib/utils";
 import { Project } from "@/lib/api/types";
+import ProjectCard from "@/components/project-card";
+import { Locale } from "@/types/locale";
 
 type Props = {
-  locale: string;
+  locale: Locale;
 };
 
 async function Projects({ locale }: Props) {
@@ -13,20 +13,12 @@ async function Projects({ locale }: Props) {
 
   const projects = response.data.data;
 
-  console.log("response 🤷🏻‍♂️🤷🏻‍♂️", projects[0]);
-
   return (
-    <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {projects.map((project: Project) => (
-        <Image
-          className="w-full h-auto"
-          key={project.id}
-          src={getFullPath(project.thumbnail?.path) || "/images/projects/project-1.png"}
-          alt={project.thumbnail?.title || project.title}
-          width={0}
-          height={0}
-          sizes="50vw"
-        />
+        <li key={project.id}>
+          <ProjectCard project={project} locale={locale} />
+        </li>
       ))}
     </ul>
   );
