@@ -10,6 +10,7 @@ import {
   ApiResponse,
   Settings,
   CategoriesResponse,
+  Upload,
 } from "./types";
 
 export class ApiEndpoints {
@@ -44,7 +45,7 @@ export class ApiEndpoints {
   }
 
   async getProjectBySlug(slug: string) {
-    return this.client.get<Project>(`/api/v1/projects/${slug}`);
+    return this.client.get<{ project: Project; images: Upload[] | Upload }>(`/api/v1/projects/${slug}`);
   }
 
   // Services

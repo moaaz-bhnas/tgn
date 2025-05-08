@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { Upload } from "@/lib/api/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -23,4 +24,40 @@ export function getFullPath(path: string | null | undefined): string {
 
   // Prefix with API URL
   return `${process.env.NEXT_PUBLIC_API_URL}/${cleanPath}`;
+}
+
+/**
+ * Normalizes project images into an array of Upload objects
+ * @param images The images data from the project
+ * @returns Array of Upload objects
+ */
+export function normalizeProjectImages(images: string | Upload | Upload[] | null | undefined): Upload[] {
+  if (!images) return [];
+
+  if (Array.isArray(images)) {
+    return images;
+  }
+
+  // If it's a single Upload object
+  if (typeof images === "object" && "path" in images) {
+    return [images];
+  }
+
+  // If it's a string, it's a comma-separated list of image IDs
+  if (typeof images === "string") {
+    return images.split(",").map((id) => ({
+      id: parseInt(id.trim()),
+      path: id.trim(),
+      title: "",
+      size: "",
+      type: "",
+      extension: "",
+      user_id: 0,
+      external_link: "",
+      created_at: "",
+      updated_at: "",
+    }));
+  }
+
+  return [];
 }

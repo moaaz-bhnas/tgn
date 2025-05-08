@@ -76,6 +76,8 @@ export interface Project {
   title: string;
   description: string;
   item_attributes: Record<string, string> | null;
+  slogan: string | null;
+  brand_identity: string | null;
   thumbnail: {
     id: number;
     title: string;
