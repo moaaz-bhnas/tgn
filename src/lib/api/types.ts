@@ -207,3 +207,30 @@ export interface Settings {
 export type CategoriesResponse = {
   categories: Category[];
 };
+
+export type CareerTranslation = {
+  id: number;
+  career_id: number;
+  locale: string;
+  title: string;
+  description: string;
+  location: string;
+};
+
+export type Career = {
+  id: number;
+  slug: string;
+  meta_keywords: string;
+  meta_description: string;
+  workplace: string;
+  type: string;
+  paid: boolean;
+  active: boolean;
+  deleted_at: string | null;
+  created_at: string;
+  updated_at: string;
+  title: string;
+  location: string;
+  description: string;
+  translations: CareerTranslation[];
+};

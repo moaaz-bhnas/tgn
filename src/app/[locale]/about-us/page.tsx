@@ -15,7 +15,7 @@ async function AboutUsPage({ params }: { params: Promise<{ locale: Locale }> }) 
       </Container>
 
       <Container>
-        <AboutUsAccordion t={t.accordion} />
+        <AboutUsAccordion t={t.accordion} locale={locale} />
       </Container>
     </div>
   );

@@ -4,19 +4,19 @@ import { T } from "@/types/i18n";
 import Image from "next/image";
 import { createApi } from "@/lib/api";
 import { Locale } from "@/types/locale";
-
-type Member = {
-  name: string;
-  position: string;
-  avatar: string;
-};
-
+import { Team } from "@/lib/api/types";
+import { getFullPath } from "@/lib/utils";
 type Props = {
   t: T;
   locale: Locale;
 };
 
-function TeamSection({ title, team }: { title: string; team: Member[] }) {
+function TeamSection({ title, team }: { title: string; team: Team[] }) {
+  console.log(
+    "⁉️",
+    team.map((member) => getFullPath(member.image))
+  );
+
   return (
     <div className="space-y-4 text-end">
       {/* Board */}
@@ -27,12 +27,12 @@ function TeamSection({ title, team }: { title: string; team: Member[] }) {
           {team.map((member) => (
             <li key={member.name} className="space-y-2">
               <div>
-                <h4 className="uppercase font-medium">{member.name}</h4>
-                <p className="text-muted-foreground text-sm text-nowrap">{member.position}</p>
+                <h4 className="uppercase font-medium truncate whitespace-nowrap">{member.name}</h4>
+                <p className="text-muted-foreground text-sm text-nowrap">{member.job_title}</p>
               </div>
               <Image
                 className="w-full border-[1.5px] border-gray-800 aspect-[4/5] object-cover"
-                src={member.avatar}
+                src={getFullPath(member.image) || "/images/avatar/default.png"}
                 alt={member.name}
                 width={0}
                 height={0}
@@ -49,6 +49,8 @@ function TeamSection({ title, team }: { title: string; team: Member[] }) {
 async function AboutUsAccordion({ t, locale }: Props) {
   const api = createApi({ language: locale });
   const settings = await api.getSettings();
+  const teamsResponse = await api.getTeams();
+
   const { who_we_are, our_future } = settings.message;
 
   const data = [
@@ -98,33 +100,8 @@ async function AboutUsAccordion({ t, locale }: Props) {
     },
   ];
 
-  const members = [
-    {
-      name: "Oliver Kensington",
-      position: "CEO",
-      avatar: "/images/placeholder.jpg",
-    },
-    {
-      name: "Sophia Langford",
-      position: "CTO",
-      avatar: "/images/placeholder.jpg",
-    },
-    {
-      name: "Benjamin Caldwell",
-      position: "CFO",
-      avatar: "/images/placeholder.jpg",
-    },
-    {
-      name: "Amelia Whitmore",
-      position: "Strategic Designer",
-      avatar: "/images/placeholder.jpg",
-    },
-    {
-      name: "Nathaniel Prescott",
-      position: "COO",
-      avatar: "/images/placeholder.jpg",
-    },
-  ];
+  const boardMembers = teamsResponse.data.teams.filter((member) => member.type === "Board");
+  const teamMembers = teamsResponse.data.teams.filter((member) => member.type === "Team");
 
   return (
     <Accordion className="divide-y divide-gray-800" type="single" collapsible>
@@ -143,8 +120,8 @@ async function AboutUsAccordion({ t, locale }: Props) {
       <AccordionItem value="team">
         <AccordionTrigger className="text-2xl uppercase hover:no-underline">{t.meet_the_team}</AccordionTrigger>
         <AccordionContent className="space-y-8">
-          <TeamSection title={t.board} team={members} />
-          <TeamSection title={t.team} team={members} />
+          <TeamSection title={t.board} team={boardMembers} />
+          <TeamSection title={t.team} team={teamMembers} />
         </AccordionContent>
       </AccordionItem>
     </Accordion>

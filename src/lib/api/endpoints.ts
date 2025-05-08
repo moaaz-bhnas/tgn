@@ -11,6 +11,7 @@ import {
   Settings,
   CategoriesResponse,
   Upload,
+  Career,
 } from "./types";
 
 export class ApiEndpoints {
@@ -22,11 +23,11 @@ export class ApiEndpoints {
 
   // Careers
   async getCareers(params?: ListParams) {
-    return this.client.get<PaginatedResponse<any>>("/api/v1/careers", params);
+    return this.client.get<PaginatedResponse<Career>>("/api/v1/careers", params);
   }
 
   async getCareerBySlug(slug: string) {
-    return this.client.get<any>(`/api/v1/careers/${slug}`);
+    return this.client.get<Career>(`/api/v1/careers/${slug}`);
   }
 
   // Categories
@@ -60,7 +61,7 @@ export class ApiEndpoints {
 
   // Teams
   async getTeams(params?: ListParams) {
-    return this.client.get<Team[]>("/api/v1/teams", params);
+    return this.client.get<{ teams: Team[] }>("/api/v1/teams", params);
   }
 
   // Works

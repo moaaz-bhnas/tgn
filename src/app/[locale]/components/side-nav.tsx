@@ -47,7 +47,7 @@ function SideNav({ t, locale }: Props) {
       { label: t.about_us, href: `/${locale}/about-us` },
       { label: t.contact_us, href: `/${locale}/contact-us` },
       { label: t.services, href: `/${locale}/services` },
-      { label: t.case_study, href: `/${locale}/case-study` },
+      { label: t.expertise, href: `/${locale}/expertise` },
       { label: t.come_on_board, href: `/${locale}/come-on-board` },
     ];
 
