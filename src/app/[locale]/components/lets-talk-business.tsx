@@ -12,7 +12,7 @@ function LetsTalkBusiness({ t }: Props) {
   return (
     <div className="flex justify-center items-center gap-1.5 text-[7vw] sm:text-[3.25rem] lg:text-[4.75rem] xl:text-[5.5rem] font-extrabold uppercase text-center">
       <p>{"{"}</p>
-      <TypeAnimation className={cn("text-nowrap")} sequence={[t.headline]} wrapper="p" speed={50} />
+      <TypeAnimation className={cn("text-nowrap")} sequence={[t.headline]} wrapper="p" speed={50} cursor={false} />
       <p>{"}"}</p>
     </div>
   );
