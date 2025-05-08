@@ -25,15 +25,11 @@ async function ApplyPage({ params }: Props) {
   return (
     <div className="bg-tggrey">
       <Container>
-        <JsonViewer data={career} />
-      </Container>
-
-      <Container>
         <LetsTalkBusiness t={t["lets-talk-business"]} />
       </Container>
 
       <Container>
-        <ApplyForm t={t["apply-form"]} />
+        <ApplyForm t={t["apply-form"]} career={career.data} />
       </Container>
     </div>
   );

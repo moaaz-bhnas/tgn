@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import Bubble from "@/components/bubble";
 import TgCode from "@/components/tg-code";
+import { Career } from "@/lib/api/types";
 
 const formSchema = z.object({
   firstName: z.string().min(2).max(50),
@@ -25,7 +26,7 @@ const formSchema = z.object({
   linkedin_url: z.string().min(2).max(50).optional(),
 });
 
-function ApplyForm({ t }: { t: T }) {
+function ApplyForm({ t, career }: { t: T; career: Career }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {},
