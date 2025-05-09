@@ -23,9 +23,9 @@ async function ExpertiseArticle({ t, locale, projectSlug }: Props) {
         <div className="my-auto font-bold text-lg lg:text-xl uppercase">
           <span>+</span>
           <p>
-            {`{${t.case_study}}`}
+            {`${work.title}`}
             <br />
-            {t.brand_identity}
+            {work.description}
           </p>
         </div>
 
