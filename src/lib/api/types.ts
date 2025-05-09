@@ -35,7 +35,7 @@ export interface Category {
   translations: Translation[];
   services: Service[];
   projects: Project[];
-  works: Work[];
+  works: Project[];
 }
 
 export type Upload = {
@@ -101,37 +101,6 @@ export type WorkTranslation = {
   description: string;
   item_attributes: Record<string, string> | null;
 };
-
-export interface Work {
-  id: number;
-  category_id: number;
-  slug: string;
-  meta_keywords: string;
-  meta_description: string;
-  images: string;
-  thumbnail_img: string;
-  link: string | null;
-  featured: number;
-  active: number;
-  created_at: string;
-  updated_at: string;
-  title: string;
-  description: string;
-  item_attributes: Record<string, string> | null;
-  thumbnail: {
-    id: number;
-    title: string;
-    path: string;
-    size: string;
-    type: string;
-    extension: string;
-    user_id: number;
-    external_link: string;
-    created_at: string;
-    updated_at: string;
-  } | null;
-  translations: WorkTranslation[];
-}
 
 export interface Service {
   id: number;
@@ -217,6 +186,23 @@ export type CareerTranslation = {
   location: string;
 };
 
+export type ApplicationFieldTranslation = {
+  id: number;
+  application_field_id: number;
+  locale: string;
+  label: string;
+};
+
+export type ApplicationField = {
+  id: number;
+  career_id: number;
+  type: string;
+  required: boolean;
+  deleted_at: string | null;
+  label: string;
+  translations: ApplicationFieldTranslation[];
+};
+
 export type Career = {
   id: number;
   slug: string;
@@ -233,4 +219,13 @@ export type Career = {
   location: string;
   description: string;
   translations: CareerTranslation[];
+  application_fields: ApplicationField[];
+};
+
+export type ContactData = {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
 };

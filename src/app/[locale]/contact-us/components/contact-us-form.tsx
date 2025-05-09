@@ -4,13 +4,15 @@ import { T } from "@/types/i18n";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
 import Bubble from "@/components/bubble";
 import TgCode from "@/components/tg-code";
 import { Textarea } from "@/components/ui/textarea";
+import { createApi } from "@/lib/api";
+import { Locale } from "@/types/locale";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   firstName: z.string().min(2).max(50),
@@ -21,16 +23,59 @@ const formSchema = z.object({
   story: z.string(),
 });
 
-function ContactUsForm({ t }: { t: T }) {
+function ContactUsForm({ t, locale }: { t: T; locale: Locale }) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {},
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      industry: "",
+      story: "",
+    },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      setIsSubmitting(true);
+
+      const api = createApi({ language: locale });
+      const response = await api.submitContact({
+        name: `${values.firstName} ${values.lastName}`,
+        email: values.email,
+        phone: values.phone,
+        subject: values.industry ? `Industry: ${values.industry}` : "Contact Form Submission",
+        message: values.story,
+      });
+
+      if (response.success) {
+        toast({
+          title: t.success_title || "Success",
+          description: t.success_message || "Your message has been sent successfully.",
+          variant: "default",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: t.error_title || "Error",
+          description: t.error_message || "Failed to send your message. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: t.error_title || "Error",
+        description: t.error_message || "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      });
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -124,8 +169,8 @@ function ContactUsForm({ t }: { t: T }) {
 
         <div className="flex justify-center">
           <Bubble arrowPosition="right-left">
-            <button className="py-2 px-4 flex items-center gap-1 font-semibold" type="submit">
-              <TgCode text={t.submit} />
+            <button className="py-2 px-4 flex items-center gap-1 font-semibold" type="submit" disabled={isSubmitting}>
+              <TgCode text={isSubmitting ? t.submitting : t.submit} />
             </button>
           </Bubble>
         </div>

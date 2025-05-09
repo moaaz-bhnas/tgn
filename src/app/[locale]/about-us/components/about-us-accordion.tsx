@@ -89,15 +89,6 @@ async function AboutUsAccordion({ t, locale }: Props) {
         },
       ],
     },
-    {
-      title: t.expertise,
-      articles: [
-        {
-          title: t.industry,
-          content: t.lorem_ipsum,
-        },
-      ],
-    },
   ];
 
   const boardMembers = teamsResponse.data.teams.filter((member) => member.type === "Board");

@@ -103,13 +103,43 @@ async function Footer({ t, locale }: Props) {
     );
   }
 
+  function renderLanguageSwitcher() {
+    const languages = [
+      { code: "en", label: "English" },
+      { code: "ar", label: "العربية" },
+    ];
+
+    return (
+      <div className="flex items-center gap-2">
+        {languages.map((lang) => (
+          <Link
+            key={lang.code}
+            href={`/${lang.code}`}
+            className={cn(
+              "px-3 py-1 text-sm border border-white/20 rounded-full transition-colors",
+              locale === lang.code ? "bg-white/10" : "hover:bg-white/5"
+            )}
+          >
+            {lang.label}
+          </Link>
+        ))}
+      </div>
+    );
+  }
+
   function renderCopyrightsBar() {
     return (
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <small>{t.copyright}</small>
-        <Link className="hover:underline" href={"/"}>
-          <small>{t.privacy_terms}</small>
-        </Link>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+          <p className="text-sm">{t.copyright}</p>
+
+          <p className="text-sm">
+            <Link className="hover:underline" href={"/"}>
+              {t.privacy_terms}
+            </Link>
+          </p>
+        </div>
+        {renderLanguageSwitcher()}
       </div>
     );
   }

@@ -8,6 +8,7 @@ import ApplyForm from "./components/apply-form";
 import { createApi } from "@/lib/api";
 import { notFound } from "next/navigation";
 import JsonViewer from "@/components/json-viewer";
+
 type Props = {
   params: Promise<{ locale: Locale; slug: string }>;
 };
@@ -24,12 +25,14 @@ async function ApplyPage({ params }: Props) {
 
   return (
     <div className="bg-tggrey">
+      <JsonViewer data={career.data.career} />
+
       <Container>
         <LetsTalkBusiness t={t["lets-talk-business"]} />
       </Container>
 
       <Container>
-        <ApplyForm t={t["apply-form"]} career={career.data} />
+        <ApplyForm t={t["apply-form"]} career={career.data.career} />
       </Container>
     </div>
   );

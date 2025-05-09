@@ -1,17 +1,16 @@
 import { ApiClient } from "./client";
 import {
-  Category,
   ListParams,
   PaginatedResponse,
   Project,
   Service,
   Team,
-  Work,
   ApiResponse,
   Settings,
   CategoriesResponse,
   Upload,
   Career,
+  ContactData,
 } from "./types";
 
 export class ApiEndpoints {
@@ -27,12 +26,17 @@ export class ApiEndpoints {
   }
 
   async getCareerBySlug(slug: string) {
-    return this.client.get<Career>(`/api/v1/careers/${slug}`);
+    return this.client.get<{ career: Career }>(`/api/v1/careers/${slug}`);
   }
 
   // Categories
   async getCategories(params?: ListParams) {
     return this.client.get<CategoriesResponse>("/api/v1/categories", params);
+  }
+
+  // Contact
+  async submitContact(data: ContactData) {
+    return this.client.post<ApiResponse<[]>>("/api/v1/contacts", data);
   }
 
   // Languages
@@ -66,10 +70,10 @@ export class ApiEndpoints {
 
   // Works
   async getWorks(params?: ListParams) {
-    return this.client.get<PaginatedResponse<Work>>("/api/v1/works", params);
+    return this.client.get<PaginatedResponse<Project>>("/api/v1/works", params);
   }
 
   async getWorkBySlug(slug: string) {
-    return this.client.get<Work>(`/api/v1/works/${slug}`);
+    return this.client.get<{ work: Project; images: Upload[] | Upload }>(`/api/v1/works/${slug}`);
   }
 }

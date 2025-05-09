@@ -109,12 +109,19 @@
       "email": "البريد الإلكتروني",
       "phone": "رقم الهاتف",
       "resume": "السيرة الذاتية",
+      "cover_letter": "الرسالة",
       "portfolio": "معرض الأعمال",
       "only_for_designers": "خاص بالمصممين فقط",
       "website_url": "رابط Behance أو الموقع الإلكتروني",
       "linkedin_url": "لينكدإن",
       "designers_execution": "خاص بالمصممين وفريق التنفيذ",
-      "submit": "إرسال"
+      "submit": "إرسال",
+      "submitting": "جاري الإرسال...",
+      "success_title": "تم إرسال الرسالة",
+      "success_message": "تم إرسال رسالتك بنجاح",
+      "error_title": "حدث خطأ",
+      "error_message": "فشل إرسال رسالتك. يرجى المحاولة مرة أخرى.",
+      "years_of_experience": "سنوات الخبرة"
     }
   },
   "contact-us-page": {
@@ -131,7 +138,12 @@
       "phone": "رقم الهاتف",
       "industry": "الصناعة",
       "story": "أخبرنا قصتك",
-      "submit": "إرسال"
+      "submit": "إرسال",
+      "submitting": "جاري الإرسال...",
+      "success_title": "تم إرسال الرسالة",
+      "success_message": "تم إرسال رسالتك بنجاح",
+      "error_title": "حدث خطأ",
+      "error_message": "فشل إرسال رسالتك. يرجى المحاولة مرة أخرى."
     }
   },
   "services-page": {
@@ -160,7 +172,7 @@
     "accordion": {
       "branding": "العلامة التجارية",
       "media_production": "إنتاج الوسائط",
-      "socia_media": "وسائل التواصل الاجتماعي",
+      "social_media": "وسائل التواصل الاجتماعي",
       "website_solutions": "حلول المواقع الإلكترونية",
       "lorem_ipsum": "لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إليت. إنتيجر إيو سيم فيتاي أركو فيهيكولا بلاسيرات. برازنت رونكوس نيسل كويز فيليس لوكتوس، نيك ديكتوم دولور تينكيندات."
     }
@@ -168,7 +180,7 @@
   "accordion": {
     "branding": "العلامة التجارية",
     "media_production": "إنتاج الوسائط",
-    "socia_media": "وسائل التواصل الاجتماعي",
+    "social_media": "وسائل التواصل الاجتماعي",
     "website_solutions": "حلول المواقع الإلكترونية",
     "brand_strategy": "استراتيجية العلامة التجارية",
     "case_study": "Minimunchi",

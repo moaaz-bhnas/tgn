@@ -8,7 +8,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { cn } from "@/lib/utils";
 import { createApi } from "@/lib/api";
-
+import { Toaster } from "@/components/ui/toaster";
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
@@ -53,6 +53,8 @@ export default async function RootLayout({
         <main>{children}</main>
 
         <Footer t={t.footer} locale={locale} />
+
+        <Toaster />
       </body>
     </html>
   );

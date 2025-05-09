@@ -26,12 +26,18 @@ function ProjectCard({ project, locale }: Props) {
         {/* Desktop: Full overlay on hover */}
         <div className="absolute inset-0 bg-black/80 opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
           <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-          <p className="text-sm text-white/90 leading-relaxed hidden lg:block">{project.description}</p>
+          <div
+            className="text-sm text-white/90 leading-relaxed hidden lg:block"
+            dangerouslySetInnerHTML={{ __html: project.description }}
+          />
         </div>
         {/* Mobile: Always visible content */}
         <div className="absolute bottom-0 left-0 right-0 p-6 lg:hidden">
           <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-          <p className="text-sm text-white/90 line-clamp-2 leading-relaxed">{project.description}</p>
+          <div
+            className="text-sm text-white/90 line-clamp-2 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: project.description }}
+          />
         </div>
       </div>
     </Link>

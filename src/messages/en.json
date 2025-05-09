@@ -109,12 +109,19 @@
       "email": "Email",
       "phone": "Phone",
       "resume": "Resume/cv",
+      "cover_letter": "Cover Letter",
       "portfolio": "Portfolio",
       "only_for_designers": "Only for designers",
       "website_url": "Behance or Website Link",
       "linkedin_url": "Linkedin",
       "designers_execution": "Only for designers and execution team",
-      "submit": "Submit"
+      "submit": "Submit",
+      "submitting": "Submitting...",
+      "success_title": "Message Sent",
+      "success_message": "Your message has been sent successfully.",
+      "error_title": "Error",
+      "error_message": "Failed to send your message. Please try again.",
+      "years_of_experience": "Years of Experience"
     }
   },
   "contact-us-page": {
@@ -131,7 +138,12 @@
       "phone": "Phone",
       "industry": "Industry",
       "story": "Tell us your story",
-      "submit": "Submit"
+      "submit": "Submit",
+      "submitting": "Submitting...",
+      "success_title": "Message Sent",
+      "success_message": "Your message has been sent successfully.",
+      "error_title": "Error",
+      "error_message": "Failed to send your message. Please try again."
     }
   },
   "services-page": {
@@ -160,7 +172,7 @@
     "accordion": {
       "branding": "Branding",
       "media_production": "Media Production",
-      "socia_media": "Social Media",
+      "social_media": "Social Media",
       "website_solutions": "Website Solutions",
       "brand_strategy": "Brand Strategy",
       "case_study": "Minimunchi",
