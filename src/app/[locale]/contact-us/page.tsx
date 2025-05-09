@@ -17,7 +17,7 @@ async function ContactUsPage({ params }: { params: Promise<{ locale: Locale }> }
       </Container>
 
       <Container>
-        <ContactUsForm t={t["contact-us-form"]} />
+        <ContactUsForm t={t["contact-us-form"]} locale={locale} />
       </Container>
     </div>
   );
