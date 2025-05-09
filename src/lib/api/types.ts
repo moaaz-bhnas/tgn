@@ -229,3 +229,13 @@ export type ContactData = {
   subject: string;
   message: string;
 };
+
+export interface CareerApplication {
+  name: string;
+  email: string;
+  phone: string;
+  experience: number;
+  cover_letter: string;
+  resume: File;
+  fields: Record<string, any>;
+}

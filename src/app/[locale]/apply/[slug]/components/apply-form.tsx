@@ -6,11 +6,13 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import Bubble from "@/components/bubble";
 import TgCode from "@/components/tg-code";
-import { Career } from "@/lib/api/types";
+import { Career, CareerApplication } from "@/lib/api/types";
 import { MapPinIcon, BriefcaseIcon } from "lucide-react";
+import { createApi } from "@/lib/api";
 
 function ApplyForm({ t, career }: { t: T; career: Career }) {
   // Get file type application fields
@@ -52,10 +54,7 @@ function ApplyForm({ t, career }: { t: T; career: Career }) {
       typeof window === "undefined"
         ? z.any().refine((file) => file?.length == 1, "File is required.")
         : z.instanceof(FileList).refine((file) => file?.length == 1, "File is required."),
-    coverLetter:
-      typeof window === "undefined"
-        ? z.any().refine((file) => file?.length == 1, "File is required.")
-        : z.instanceof(FileList).refine((file) => file?.length == 1, "File is required."),
+    coverLetter: z.string().min(1, "Cover letter is required"),
     ...fileFieldsSchema,
     ...textFieldsSchema,
   });
@@ -71,23 +70,56 @@ function ApplyForm({ t, career }: { t: T; career: Career }) {
       phone: "",
       yearsOfExperience: "",
       resume: null,
-      coverLetter: null,
+      coverLetter: "",
+      ...fileFields.reduce(
+        (acc, field) => ({
+          ...acc,
+          [field.id.toString()]: null,
+        }),
+        {}
+      ),
+      ...textFields.reduce(
+        (acc, field) => ({
+          ...acc,
+          [field.id.toString()]: "",
+        }),
+        {}
+      ),
     },
   });
 
   // File preview
   const resumeFile = form.watch("resume");
-  const coverLetterFile = form.watch("coverLetter");
-
   const resumeFileName = resumeFile?.length > 0 ? resumeFile[0].name : null;
-  const coverLetterFileName = coverLetterFile?.length > 0 ? coverLetterFile[0].name : null;
 
-  function onSubmit(values: FormData) {
-    console.log(values);
+  async function onSubmit(values: FormData) {
+    try {
+      const api = createApi({ language: "en" });
+      const applicationData: CareerApplication = {
+        name: `${values.firstName} ${values.lastName}`,
+        email: values.email,
+        phone: values.phone,
+        experience: parseInt(values.yearsOfExperience),
+        cover_letter: values.coverLetter,
+        resume: values.resume[0],
+        fields: textFields.reduce(
+          (acc, field) => ({
+            ...acc,
+            [field.id]: values[field.id.toString() as keyof FormData],
+          }),
+          {} as Record<string, any>
+        ),
+      };
+
+      const response = await api.applyCareer(career.slug, applicationData);
+      // TODO: Handle success
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      // TODO: Handle error
+    }
   }
 
   const fileRef = form.register("resume");
-  const coverLetterRef = form.register("coverLetter");
 
   return (
     <Form {...form}>
@@ -221,31 +253,6 @@ function ApplyForm({ t, career }: { t: T; career: Career }) {
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="coverLetter"
-            render={({ field }) => (
-              <FormItem className="sm:col-span-2">
-                <FormLabel className="bg-transparent border-2 rounded-none border-black w-full flex items-center flex-col justify-center py-8 gap-4">
-                  <TgCode text={t.cover_letter} />
-
-                  {coverLetterFileName && <span className="text-muted-foreground">{coverLetterFileName}</span>}
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    {...coverLetterRef}
-                    className="sr-only w-1"
-                    type="file"
-                    onChange={(event) => {
-                      field.onChange(event.target?.files ?? undefined);
-                    }}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
           {fileFields.map((field) => {
             const fieldId = field.id.toString();
             const fieldRef = form.register(fieldId as keyof FormData);
@@ -280,7 +287,20 @@ function ApplyForm({ t, career }: { t: T; career: Career }) {
             );
           })}
 
-          {/* Map over career.application_fields and render a form field for each that has a type number or text */}
+          <FormField
+            control={form.control}
+            name="coverLetter"
+            render={({ field }) => (
+              <FormItem className="sm:col-span-2">
+                <FormLabel>{`{${t.cover_letter}}`}</FormLabel>
+                <FormControl>
+                  <Textarea className="tg-input" placeholder={t.cover_letter_placeholder} {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           {career.application_fields.map((field) => {
             if (field.type === "number" || field.type === "text") {
               const fieldId = field.id.toString();

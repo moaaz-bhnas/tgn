@@ -50,9 +50,10 @@ export class ApiClient {
   }
 
   async post<T>(endpoint: string, data?: any): Promise<ApiResponse<T>> {
+    const body = data instanceof FormData ? data : JSON.stringify(data);
     return this.fetch<T>(endpoint, {
       method: "POST",
-      body: JSON.stringify(data),
+      body,
     });
   }
 

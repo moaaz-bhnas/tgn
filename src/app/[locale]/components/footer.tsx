@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Locale } from "@/types/locale";
 import { createApi } from "@/lib/api";
 import { getFullPath } from "@/lib/utils";
+import LanguageSwitcher from "@/components/language-switcher";
 
 type Props = {
   t: T;
@@ -15,6 +16,11 @@ type Props = {
 async function Footer({ t, locale }: Props) {
   const api = createApi({ language: locale });
   const settings = await api.getSettings();
+
+  const languages = [
+    { code: "en", label: "English" },
+    { code: "ar", label: "العربية" },
+  ];
 
   function renderLogosBar() {
     return (
@@ -103,30 +109,6 @@ async function Footer({ t, locale }: Props) {
     );
   }
 
-  function renderLanguageSwitcher() {
-    const languages = [
-      { code: "en", label: "English" },
-      { code: "ar", label: "العربية" },
-    ];
-
-    return (
-      <div className="flex items-center gap-2">
-        {languages.map((lang) => (
-          <Link
-            key={lang.code}
-            href={`/${lang.code}`}
-            className={cn(
-              "px-3 py-1 text-sm border border-white/20 rounded-full transition-colors",
-              locale === lang.code ? "bg-white/10" : "hover:bg-white/5"
-            )}
-          >
-            {lang.label}
-          </Link>
-        ))}
-      </div>
-    );
-  }
-
   function renderCopyrightsBar() {
     return (
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -139,7 +121,7 @@ async function Footer({ t, locale }: Props) {
             </Link>
           </p>
         </div>
-        {renderLanguageSwitcher()}
+        <LanguageSwitcher languages={languages} currentLocale={locale} />
       </div>
     );
   }

@@ -11,6 +11,7 @@ import {
   Upload,
   Career,
   ContactData,
+  CareerApplication,
 } from "./types";
 
 export class ApiEndpoints {
@@ -75,5 +76,10 @@ export class ApiEndpoints {
 
   async getWorkBySlug(slug: string) {
     return this.client.get<{ work: Project; images: Upload[] | Upload }>(`/api/v1/works/${slug}`);
+  }
+
+  // Career Application
+  async applyCareer(slug: string, data: CareerApplication) {
+    return this.client.post<ApiResponse<[]>>(`/api/v1/careers/${slug}/apply`, data);
   }
 }
