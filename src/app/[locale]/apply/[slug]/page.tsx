@@ -25,8 +25,6 @@ async function ApplyPage({ params }: Props) {
 
   return (
     <div className="bg-tggrey">
-      <JsonViewer data={career.data.career} />
-
       <Container>
         <LetsTalkBusiness t={t["lets-talk-business"]} />
       </Container>
