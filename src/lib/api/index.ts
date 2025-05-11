@@ -8,11 +8,11 @@ import { ApiConfig } from "./types";
 
 const DEFAULT_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
-export function createApi({ language, headers }: Pick<ApiConfig, "language"> & { headers?: Record<string, string> }) {
+export function createApi({ language }: Pick<ApiConfig, "language">) {
   const client = new ApiClient({
     baseURL: DEFAULT_BASE_URL,
     language,
-    headers,
   });
+
   return new ApiEndpoints(client);
 }

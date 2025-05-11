@@ -94,12 +94,7 @@ function ApplyForm({ t, career, locale }: { t: T; career: Career; locale: string
 
   async function onSubmit(values: FormData) {
     try {
-      const api = createApi({
-        language: locale,
-        headers: {
-          "Content-Type": "multipart/form-data; boundary=<calculated when request is sent>",
-        },
-      });
+      const api = createApi({ language: locale });
       const formData = new FormData();
 
       formData.append("name", `${values.firstName} ${values.lastName}`);

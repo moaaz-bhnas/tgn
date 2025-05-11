@@ -7,8 +7,6 @@ export class ApiClient {
     this.config = {
       baseURL: config.baseURL,
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
         ...config.headers,
       },
       language: config.language || "en",
