@@ -30,7 +30,7 @@ async function ApplyPage({ params }: Props) {
       </Container>
 
       <Container>
-        <ApplyForm t={t["apply-form"]} career={career.data.career} />
+        <ApplyForm t={t["apply-form"]} career={career.data.career} locale={locale} />
       </Container>
     </div>
   );

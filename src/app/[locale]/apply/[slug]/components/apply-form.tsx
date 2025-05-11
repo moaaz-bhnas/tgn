@@ -14,7 +14,7 @@ import { Career, CareerApplication } from "@/lib/api/types";
 import { MapPinIcon, BriefcaseIcon } from "lucide-react";
 import { createApi } from "@/lib/api";
 
-function ApplyForm({ t, career }: { t: T; career: Career }) {
+function ApplyForm({ t, career, locale }: { t: T; career: Career; locale: string }) {
   // Get file type application fields
   const fileFields = career.application_fields.filter((field) => field.type === "file");
   const textFields = career.application_fields.filter((field) => field.type === "text" || field.type === "number");
@@ -94,24 +94,41 @@ function ApplyForm({ t, career }: { t: T; career: Career }) {
 
   async function onSubmit(values: FormData) {
     try {
-      const api = createApi({ language: "en" });
-      const applicationData: CareerApplication = {
-        name: `${values.firstName} ${values.lastName}`,
-        email: values.email,
-        phone: values.phone,
-        experience: parseInt(values.yearsOfExperience),
-        cover_letter: values.coverLetter,
-        resume: values.resume[0],
-        fields: textFields.reduce(
-          (acc, field) => ({
-            ...acc,
-            [field.id]: values[field.id.toString() as keyof FormData],
-          }),
-          {} as Record<string, any>
-        ),
-      };
+      const api = createApi({
+        language: locale,
+        headers: {
+          "Content-Type": "multipart/form-data; boundary=<calculated when request is sent>",
+        },
+      });
+      const formData = new FormData();
 
-      const response = await api.applyCareer(career.slug, applicationData);
+      formData.append("name", `${values.firstName} ${values.lastName}`);
+      formData.append("email", values.email);
+      formData.append("phone", values.phone);
+      formData.append("experience", values.yearsOfExperience);
+      formData.append("cover_letter", values.coverLetter);
+      formData.append("resume", values.resume[0]);
+
+      // Add dynamic text fields
+      const fields: Record<string, any> = {};
+      textFields.forEach((field) => {
+        const value = values[field.id.toString() as keyof FormData];
+        if (value) {
+          fields[field.id] = value;
+        }
+      });
+
+      // Add dynamic file fields
+      fileFields.forEach((field) => {
+        const file = values[field.id.toString() as keyof FormData];
+        if (file?.[0]) {
+          formData.append(`fields[${field.id}]`, file[0]);
+        }
+      });
+
+      formData.append("fields", JSON.stringify(fields));
+
+      const response = await api.applyCareer(career.slug, formData);
       // TODO: Handle success
     } catch (error) {
       console.error("Error submitting application:", error);

@@ -79,7 +79,7 @@ export class ApiEndpoints {
   }
 
   // Career Application
-  async applyCareer(slug: string, data: CareerApplication) {
+  async applyCareer(slug: string, data: FormData) {
     return this.client.post<ApiResponse<[]>>(`/api/v1/careers/${slug}/apply`, data);
   }
 }
