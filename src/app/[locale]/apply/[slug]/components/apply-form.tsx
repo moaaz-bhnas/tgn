@@ -4,13 +4,13 @@ import { T } from "@/types/i18n";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import Bubble from "@/components/bubble";
 import TgCode from "@/components/tg-code";
-import { Career, CareerApplication } from "@/lib/api/types";
+import { Career } from "@/lib/api/types";
 import { MapPinIcon, BriefcaseIcon } from "lucide-react";
 import { createApi } from "@/lib/api";
 
