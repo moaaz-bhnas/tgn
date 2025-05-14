@@ -18,12 +18,12 @@ export default function StickyBarWrapper({ children }: Props) {
   return (
     <StickyBar
       isStickyTop
-      containerClassName={isHomePage ? "bg-tgred" : "bg-tggrey"}
+      containerClassName={isHomePage ? "bg-white" : "bg-tggrey"}
       className={cn(
         "transition",
-        isHomePage ? "bg-tgred" : "bg-tggrey",
+        isHomePage ? "bg-white" : "bg-tggrey",
         y && y > 0 ? "backdrop-blur shadow-sm" : "",
-        y && y > 0 ? (isHomePage ? "bg-tgred/90" : "bg-tggrey/90") : ""
+        y && y > 0 ? (isHomePage ? "bg-white/90" : "bg-tggrey/90") : ""
       )}
     >
       {children}
