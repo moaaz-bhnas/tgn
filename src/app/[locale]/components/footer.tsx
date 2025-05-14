@@ -89,16 +89,7 @@ async function Footer({ t, locale }: Props) {
 
             <div className="flex flex-col gap-1">
               {column.links.map((link, index) => (
-                <Link
-                  key={index}
-                  href={link.href}
-                  className={cn(
-                    "font-extralight hover:underline",
-                    index === 0
-                      ? "xl:before:content-[''] xl:before:w-5 xl:before:h-[1px] xl:before:bg-white xl:before:inline-block xl:before:me-1"
-                      : ""
-                  )}
-                >
+                <Link key={index} href={link.href} className={cn("font-extralight hover:underline")}>
                   {link.label}
                 </Link>
               ))}
