@@ -6,6 +6,8 @@ import LetsTalkBusiness from "../components/lets-talk-business";
 import ComeOnBoardAccordion from "./components/come-on-board-accordion";
 import BeWithUs from "./components/be-with-us";
 
+export const revalidate = 60;
+
 async function ComeOnBoardPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const { "come-on-board-page": t } = await getDictionary(locale);

@@ -4,6 +4,8 @@ import { Locale } from "@/types/locale";
 import LetsTalkBusiness from "../components/lets-talk-business";
 import ContactUsForm from "./components/contact-us-form";
 
+export const revalidate = 60;
+
 type Props = {};
 
 async function ContactUsPage({ params }: { params: Promise<{ locale: Locale }> }) {

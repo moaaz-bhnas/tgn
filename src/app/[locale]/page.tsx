@@ -7,6 +7,8 @@ import Marquee from "./components/marquee";
 import Projects from "./components/projects";
 import isRtl from "@/lib/is-rtl";
 
+export const revalidate = 60;
+
 export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const { "home-page": t } = await getDictionary(locale);

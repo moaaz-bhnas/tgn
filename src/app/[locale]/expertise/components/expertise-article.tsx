@@ -22,11 +22,11 @@ async function ExpertiseArticle({ t, locale, projectSlug }: Props) {
       <div className="p-8 bg-tgpurple flex flex-col justify-center items-center text-center aspect-[5/4]">
         <div className="my-auto font-bold text-lg lg:text-xl uppercase">
           <span>+</span>
-          <p>
+          <div>
             {`${work.title}`}
             <br />
-            {work.description}
-          </p>
+            <div dangerouslySetInnerHTML={{ __html: work.description }} />
+          </div>
         </div>
 
         <Link className="underline" href={`/${locale}/case-study/${projectSlug}`}>

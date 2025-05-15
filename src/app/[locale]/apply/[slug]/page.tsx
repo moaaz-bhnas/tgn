@@ -13,6 +13,8 @@ type Props = {
   params: Promise<{ locale: Locale; slug: string }>;
 };
 
+export const revalidate = 60;
+
 async function ApplyPage({ params }: Props) {
   const { locale, slug } = await params;
   const { "apply-page": t } = await getDictionary(locale);

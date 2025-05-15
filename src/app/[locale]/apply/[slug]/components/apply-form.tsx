@@ -165,7 +165,7 @@ function ApplyForm({ t, career, locale }: { t: T; career: Career; locale: string
           </div>
 
           <div className="prose prose-sm max-w-none">
-            <p className="text-muted-foreground">{career.description}</p>
+            <div className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: career.description }} />
           </div>
         </div>
 
