@@ -16,6 +16,7 @@ type Props = {
 async function Footer({ t, locale }: Props) {
   const api = createApi({ language: locale });
   const settings = await api.getSettings();
+  const { links_social } = settings.message;
 
   const languages = [
     { code: "en", label: "English" },
@@ -66,17 +67,17 @@ async function Footer({ t, locale }: Props) {
       {
         label: t.follow_us,
         links: [
-          { label: t.instagram, href: `/${locale}/` },
-          { label: t.facebook, href: `/${locale}/` },
-          { label: t.linkedin, href: `/${locale}/` },
-          { label: t.behance, href: `/${locale}/` },
+          { label: t.instagram, href: links_social.instagram_link || `/${locale}/` },
+          { label: t.facebook, href: links_social.facebook_link || `/${locale}/` },
+          { label: t.linkedin, href: links_social.linkedin_link || `/${locale}/` },
+          { label: t.behance, href: links_social.behance_link || `/${locale}/` },
         ],
       },
       {
         label: t.come_on_board,
         links: [
-          { label: t.get_interview, href: `/${locale}/apply` },
-          { label: t.looking_for, href: `/${locale}/apply` },
+          { label: t.get_interview, href: `/${locale}/come-on-board` },
+          { label: t.looking_for, href: `/${locale}/come-on-board` },
         ],
       },
     ];
