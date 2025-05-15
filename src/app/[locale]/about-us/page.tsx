@@ -4,7 +4,7 @@ import { getDictionary } from "@/lib/dictionaries";
 import LetsTalkBusiness from "../components/lets-talk-business";
 import AboutUsAccordion from "./components/about-us-accordion";
 
-export const revalidate = 30;
+export const revalidate = 60;
 
 async function AboutUsPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;

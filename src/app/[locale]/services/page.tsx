@@ -8,7 +8,7 @@ import { createApi } from "@/lib/api";
 
 type Props = {};
 
-export const revalidate = 30;
+export const revalidate = 60;
 
 async function ServicesPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
