@@ -7,7 +7,7 @@ import Marquee from "./components/marquee";
 import Projects from "./components/projects";
 import isRtl from "@/lib/is-rtl";
 
-export const revalidate = 60;
+export const revalidate = 30;
 
 export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;

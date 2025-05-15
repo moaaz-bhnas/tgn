@@ -4,7 +4,7 @@ import { Locale } from "@/types/locale";
 import LetsTalkBusiness from "../components/lets-talk-business";
 import ContactUsForm from "./components/contact-us-form";
 
-export const revalidate = 60;
+export const revalidate = 30;
 
 type Props = {};
 

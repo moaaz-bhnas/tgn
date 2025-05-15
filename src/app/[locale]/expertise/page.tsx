@@ -5,7 +5,7 @@ import React from "react";
 import LetsTalkBusiness from "../components/lets-talk-business";
 import ExpertiseAccordion from "./components/expertise-accordion";
 
-export const revalidate = 60;
+export const revalidate = 30;
 
 async function ExpertisePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;

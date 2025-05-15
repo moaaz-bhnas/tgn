@@ -54,7 +54,7 @@ export async function generateStaticParams() {
   return params;
 }
 
-export const revalidate = 60;
+export const revalidate = 30;
 
 async function CaseStudyPage({ params }: Props) {
   const { locale, slug } = await params;
