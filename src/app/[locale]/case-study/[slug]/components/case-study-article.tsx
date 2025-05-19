@@ -11,10 +11,10 @@ function CaseStudyArticle({ t, project, images }: Props) {
   return (
     <article className="divide-y divide-black">
       <Container>
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between">
-          <h2 className="text-5xl font-extrabold uppercase">{project.title}</h2>
-          <p>{project.slogan}</p>
-          <p className="text-muted-foreground mt-2 lg:mt-0">{project.brand_identity}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:items-end">
+          <h2 className="text-5xl font-extrabold uppercase lg:col-span-6">{project.title}</h2>
+          <p className="lg:col-span-3">{project.slogan}</p>
+          <p className="text-muted-foreground lg:col-span-3">{project.brand_identity}</p>
         </div>
       </Container>
 
