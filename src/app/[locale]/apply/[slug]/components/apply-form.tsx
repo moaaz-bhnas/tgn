@@ -11,10 +11,14 @@ import { Badge } from "@/components/ui/badge";
 import Bubble from "@/components/bubble";
 import TgCode from "@/components/tg-code";
 import { Career } from "@/lib/api/types";
-import { MapPinIcon, BriefcaseIcon } from "lucide-react";
+import { MapPinIcon, BriefcaseIcon, Loader2 } from "lucide-react";
 import { createApi } from "@/lib/api";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 function ApplyForm({ t, career, locale }: { t: T; career: Career; locale: string }) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   // Get file type application fields
   const fileFields = career.application_fields.filter((field) => field.type === "file");
   const textFields = career.application_fields.filter((field) => field.type === "text" || field.type === "number");
@@ -94,6 +98,7 @@ function ApplyForm({ t, career, locale }: { t: T; career: Career; locale: string
 
   async function onSubmit(values: FormData) {
     try {
+      setIsSubmitting(true);
       const api = createApi({ language: locale });
       const formData = new FormData();
 
@@ -105,11 +110,10 @@ function ApplyForm({ t, career, locale }: { t: T; career: Career; locale: string
       formData.append("resume", values.resume[0]);
 
       // Add dynamic text fields
-      const fields: Record<string, any> = {};
       textFields.forEach((field) => {
         const value = values[field.id.toString() as keyof FormData];
         if (value) {
-          fields[field.id] = value;
+          formData.append(`fields[${field.id}]`, value);
         }
       });
 
@@ -121,13 +125,31 @@ function ApplyForm({ t, career, locale }: { t: T; career: Career; locale: string
         }
       });
 
-      formData.append("fields", JSON.stringify(fields));
-
       const response = await api.applyCareer(career.slug, formData);
-      // TODO: Handle success
+
+      if (response.success) {
+        toast({
+          title: t.success_title || "Success",
+          description: t.success_message || "Your application has been submitted successfully.",
+          variant: "default",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: t.error_title || "Error",
+          description: t.error_message || "Failed to submit your application. Please try again.",
+          variant: "destructive",
+        });
+      }
     } catch (error) {
+      toast({
+        title: t.error_title || "Error",
+        description: t.error_message || "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      });
       console.error("Error submitting application:", error);
-      // TODO: Handle error
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -338,8 +360,8 @@ function ApplyForm({ t, career, locale }: { t: T; career: Career; locale: string
 
         <div className="flex justify-center">
           <Bubble arrowPosition="right-left">
-            <button className="py-2 px-4 flex items-center gap-1 font-semibold" type="submit">
-              <TgCode text={t.submit} />
+            <button className="py-2 px-4 flex items-center gap-1 font-semibold" type="submit" disabled={isSubmitting}>
+              <TgCode text={isSubmitting ? t.submitting : t.submit} />
             </button>
           </Bubble>
         </div>

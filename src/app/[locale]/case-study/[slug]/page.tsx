@@ -5,6 +5,7 @@ import { createApi } from "@/lib/api";
 import { notFound } from "next/navigation";
 import { normalizeProjectImages } from "@/lib/utils";
 import { Project } from "@/lib/api/types";
+import JsonViewer from "@/components/json-viewer";
 
 type Props = {
   params: Promise<{ locale: Locale; slug: string }>;
@@ -96,6 +97,7 @@ async function CaseStudyPage({ params }: Props) {
 
   return (
     <div className="bg-tggrey">
+      {/* <JsonViewer data={response.data} /> */}
       <CaseStudyArticle t={t["case-study"]} project={project} images={images} />
     </div>
   );
