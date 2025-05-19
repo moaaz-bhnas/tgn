@@ -45,7 +45,7 @@ function CaseStudyArticle({ t, project, images }: Props) {
                 width={0}
                 height={0}
                 sizes="100vw"
-                className="w-full aspect-[3/1]"
+                className="w-full aspect-[3/1] object-cover"
               />
             ))}
           </div>
