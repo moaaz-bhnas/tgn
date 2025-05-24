@@ -1,4 +1,5 @@
 import Container from "@/components/container";
+import { Separator } from "@/components/ui/separator";
 import { Project, Upload } from "@/lib/api/types";
 import { getFullPath } from "@/lib/utils";
 import { T } from "@/types/i18n";
@@ -9,8 +10,8 @@ type Props = { t: T; project: Project; images: Upload[] };
 
 function CaseStudyArticle({ t, project, images }: Props) {
   return (
-    <article className="divide-y divide-black">
-      <Container>
+    <article>
+      <Container className="!max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:items-end">
           <h2 className="text-5xl font-extrabold uppercase lg:col-span-6">{project.title}</h2>
           <p className="lg:col-span-3">{project.slogan}</p>
@@ -18,8 +19,16 @@ function CaseStudyArticle({ t, project, images }: Props) {
         </div>
       </Container>
 
-      <Container>
+      <Container className="!max-w-7xl !py-0">
+        <Separator className="bg-black" />
+      </Container>
+
+      <Container className="!max-w-7xl">
         <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: project.description || "" }} />
+      </Container>
+
+      <Container className="!max-w-7xl !py-0">
+        <Separator className="bg-black" />
       </Container>
 
       {project.item_attributes && (
@@ -36,7 +45,7 @@ function CaseStudyArticle({ t, project, images }: Props) {
       )}
 
       {images.length > 0 && (
-        <Container>
+        <Container className="!max-w-7xl">
           <div className="flex flex-col gap-4">
             {images.map((image) => (
               <Image
@@ -45,7 +54,7 @@ function CaseStudyArticle({ t, project, images }: Props) {
                 width={0}
                 height={0}
                 sizes="100vw"
-                className="w-full aspect-[3/1] object-cover"
+                className="w-full aspect-[1920/1080] object-cover"
               />
             ))}
           </div>
