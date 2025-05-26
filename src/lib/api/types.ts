@@ -63,6 +63,14 @@ export type ProjectTranslation = {
 export interface Project {
   id: number;
   category_id: number;
+  category: {
+    id: number;
+    type: CategoryType;
+    created_at: string;
+    updated_at: string;
+    name: string;
+    translations: Translation[];
+  };
   slug: string;
   meta_keywords: string;
   meta_description: string;
