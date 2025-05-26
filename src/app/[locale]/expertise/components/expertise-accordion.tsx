@@ -8,12 +8,12 @@ type Props = { t: T; locale: Locale };
 
 async function ExpertiseAccordion({ t, locale }: Props) {
   const api = createApi({ language: locale });
-  const response = await api.getWorks();
-  const works = response.data.data;
+  const response = await api.getProjects();
+  const projects = response.data.data;
 
   return (
     <Accordion className="divide-y divide-gray-800" type="single" collapsible>
-      {works.map((project) => (
+      {projects.map((project) => (
         <AccordionItem key={project.title} value={project.title}>
           <AccordionTrigger className="text-2xl uppercase hover:no-underline">{project.title}</AccordionTrigger>
           <AccordionContent>

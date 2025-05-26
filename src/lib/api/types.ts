@@ -57,7 +57,7 @@ export type ProjectTranslation = {
   locale: string;
   title: string;
   description: string;
-  item_attributes: Record<string, string> | null;
+  item_attributes: Array<{ key: string; value: string }> | null;
 };
 
 export interface Project {
@@ -75,7 +75,7 @@ export interface Project {
   updated_at: string;
   title: string;
   description: string;
-  item_attributes: Record<string, string> | null;
+  item_attributes: Array<{ key: string; value: string }> | null;
   slogan: string | null;
   brand_identity: string | null;
   thumbnail: {
@@ -99,7 +99,7 @@ export type WorkTranslation = {
   locale: string;
   title: string;
   description: string;
-  item_attributes: Record<string, string> | null;
+  item_attributes: Array<{ key: string; value: string }> | null;
 };
 
 export interface Service {

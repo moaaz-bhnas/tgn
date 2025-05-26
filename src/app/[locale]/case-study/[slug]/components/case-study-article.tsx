@@ -31,13 +31,13 @@ function CaseStudyArticle({ t, project, images }: Props) {
         <Separator className="bg-black" />
       </Container>
 
-      {project.item_attributes && (
+      {project.item_attributes && project.item_attributes.length > 0 && (
         <Container>
           <ul className="grid lg:grid-cols-3 gap-4">
-            {Object.entries(project.item_attributes).map(([title, body]) => (
-              <li key={title} className="space-y-2">
-                <h3 className="text-lg font-bold">{`{${title}}`}</h3>
-                <p>{body}</p>
+            {project.item_attributes.map(({ key, value }) => (
+              <li key={key} className="space-y-2">
+                <h3 className="text-lg font-bold">{`{${key}}`}</h3>
+                <p>{value}</p>
               </li>
             ))}
           </ul>

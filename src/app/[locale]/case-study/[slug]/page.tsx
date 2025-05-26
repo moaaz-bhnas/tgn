@@ -4,43 +4,23 @@ import CaseStudyArticle from "./components/case-study-article";
 import { createApi } from "@/lib/api";
 import { notFound } from "next/navigation";
 import { normalizeProjectImages } from "@/lib/utils";
-import { Project } from "@/lib/api/types";
 import JsonViewer from "@/components/json-viewer";
 
 type Props = {
   params: Promise<{ locale: Locale; slug: string }>;
 };
 
-type ProjectResponse = {
-  project: Project;
-  images: any;
-};
-
-type WorkResponse = {
-  work: Project;
-  images: any;
-};
-
-function isProjectResponse(data: any): data is ProjectResponse {
-  return "project" in data;
-}
-
-function isWorkResponse(data: any): data is WorkResponse {
-  return "work" in data;
-}
-
 export async function generateStaticParams() {
   const api = createApi({ language: Locale.en }); // Default language for static generation
 
   // Fetch all projects and works
-  const [projectsResponse, worksResponse] = await Promise.all([api.getProjects(), api.getWorks()]);
+  const projectsResponse = await api.getProjects();
 
   // Get all slugs from both projects and works
   const projectSlugs = projectsResponse.data.data.map((project) => project.slug);
-  const workSlugs = worksResponse.data.data.map((work) => work.slug);
 
   // Combine and deduplicate slugs
-  const allSlugs = [...new Set([...projectSlugs, ...workSlugs])];
+  const allSlugs = [...new Set(projectSlugs)];
 
   // Generate params for each locale and slug combination
   const locales = [Locale.en, Locale.ar];
@@ -63,33 +43,14 @@ async function CaseStudyPage({ params }: Props) {
 
   const api = createApi({ language: locale });
 
-  const response = await (async function getResponse() {
-    try {
-      const projectResponse = await api.getProjectBySlug(slug);
-      return projectResponse;
-    } catch (error) {
-      console.log("Project not found, trying work...");
-    }
-
-    try {
-      const workResponse = await api.getWorkBySlug(slug);
-      return workResponse;
-    } catch (error) {
-      console.log("Work not found");
-      throw error;
-    }
-  })();
+  const response = await api.getProjectBySlug(slug);
 
   if (!response.data) {
     notFound();
   }
 
   const images = normalizeProjectImages(response.data.images);
-  const project = isProjectResponse(response.data)
-    ? response.data.project
-    : isWorkResponse(response.data)
-      ? response.data.work
-      : null;
+  const project = response.data.project;
 
   if (!project) {
     notFound();

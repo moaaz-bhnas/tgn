@@ -69,15 +69,6 @@ export class ApiEndpoints {
     return this.client.get<{ teams: Team[] }>("/api/v1/teams", params);
   }
 
-  // Works
-  async getWorks(params?: ListParams) {
-    return this.client.get<PaginatedResponse<Project>>("/api/v1/works", params);
-  }
-
-  async getWorkBySlug(slug: string) {
-    return this.client.get<{ work: Project; images: Upload[] | Upload }>(`/api/v1/works/${slug}`);
-  }
-
   // Career Application
   async applyCareer(slug: string, data: FormData) {
     return this.client.post<ApiResponse<[]>>(`/api/v1/careers/${slug}/apply`, data);

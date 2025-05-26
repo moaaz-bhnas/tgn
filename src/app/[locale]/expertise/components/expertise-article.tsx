@@ -11,11 +11,10 @@ type Props = { t: T; locale: Locale; projectSlug: string };
 async function ExpertiseArticle({ t, locale, projectSlug }: Props) {
   const api = createApi({ language: locale });
   const {
-    data: { images, work },
-  } = await api.getWorkBySlug(projectSlug);
+    data: { images, project },
+  } = await api.getProjectBySlug(projectSlug);
 
   const normalizedImages = normalizeProjectImages(images);
-  const hasMultipleImages = normalizedImages.length > 1;
 
   function renderCaseStudyCard() {
     return (
@@ -23,9 +22,9 @@ async function ExpertiseArticle({ t, locale, projectSlug }: Props) {
         <div className="my-auto font-bold text-lg lg:text-xl uppercase">
           <span>+</span>
           <div>
-            {`${work.title}`}
+            {`${project.title}`}
             <br />
-            <div dangerouslySetInnerHTML={{ __html: work.description }} />
+            <div dangerouslySetInnerHTML={{ __html: project.description }} />
           </div>
         </div>
 
@@ -37,30 +36,23 @@ async function ExpertiseArticle({ t, locale, projectSlug }: Props) {
   }
 
   return (
-    <div className="grid sm:grid-cols-2 gap-4">
-      <div className="sm:order-1">{renderCaseStudyCard()}</div>
-
-      {normalizedImages.length > 0 && (
-        <Image
-          className="w-full aspect-[5/4] object-cover sm:order-0"
-          src={getFullPath(normalizedImages[0].path)}
-          alt={normalizedImages[0].title || ""}
-          sizes="50vw"
-          width={0}
-          height={0}
-        />
-      )}
-
-      {hasMultipleImages && (
-        <Image
-          className="w-full sm:col-span-2 aspect-[5/4] sm:aspect-[10/4] object-cover sm:order-2"
-          src={getFullPath(normalizedImages[1].path)}
-          alt={normalizedImages[1].title || ""}
-          sizes="100vw"
-          width={0}
-          height={0}
-        />
-      )}
+    <div className="grid sm:grid-cols-3 gap-4">
+      {/* <div className="sm:order-1">{renderCaseStudyCard()}</div> */}
+      {normalizedImages.map((image) => (
+        <div key={image.id} className="relative group">
+          <Image
+            className="w-full aspect-[5/4] object-cover sm:order-0"
+            src={getFullPath(image.path)}
+            alt={image.title || ""}
+            sizes="50vw"
+            width={0}
+            height={0}
+          />
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {renderCaseStudyCard()}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
