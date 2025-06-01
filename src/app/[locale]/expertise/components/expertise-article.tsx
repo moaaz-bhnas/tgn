@@ -24,9 +24,11 @@ function ExpertiseArticle({ t, locale, project }: Props) {
             <div className="my-auto font-bold text-lg lg:text-xl uppercase">
               <span>+</span>
               <div>
-                {`${project.title}`}
-                <br />
-                <div dangerouslySetInnerHTML={{ __html: project.description }} />
+                <h3 className="mb-2">{project.title}</h3>
+                <div
+                  className="line-clamp-3 text-sm font-normal"
+                  dangerouslySetInnerHTML={{ __html: project.description }}
+                />
               </div>
             </div>
             <span className="underline">{t.see_case_study}</span>

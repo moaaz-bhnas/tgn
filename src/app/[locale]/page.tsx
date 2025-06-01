@@ -15,13 +15,11 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
 
   return (
     <div className="space-y-4">
-      {/* <div className="bg-tgred">  **/}
-      <Container>
+      <Container className="!pb-0">
         <LetsTalkBusiness t={t["lets-talk-business"]} />
       </Container>
-      {/* </div> */}
 
-      <Container>
+      <Container className="!pt-0">
         <Banner locale={locale} />
       </Container>
 

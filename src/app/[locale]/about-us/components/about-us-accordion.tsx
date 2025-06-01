@@ -6,17 +6,14 @@ import { createApi } from "@/lib/api";
 import { Locale } from "@/types/locale";
 import { Team } from "@/lib/api/types";
 import { getFullPath } from "@/lib/utils";
+import JsonViewer from "@/components/json-viewer";
+
 type Props = {
   t: T;
   locale: Locale;
 };
 
 function TeamSection({ title, team }: { title: string; team: Team[] }) {
-  console.log(
-    "⁉️",
-    team.map((member) => getFullPath(member.image))
-  );
-
   return (
     <div className="space-y-4 text-end">
       {/* Board */}
@@ -36,7 +33,7 @@ function TeamSection({ title, team }: { title: string; team: Team[] }) {
                 alt={member.name}
                 width={0}
                 height={0}
-                sizes="10rem"
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33.3vw, 20vw"
               />
             </li>
           ))}
@@ -51,7 +48,7 @@ async function AboutUsAccordion({ t, locale }: Props) {
   const settings = await api.getSettings();
   const teamsResponse = await api.getTeams();
 
-  const { who_we_are, our_future } = settings.message;
+  const { who_we_are, our_future, why_choose_us } = settings.message;
 
   const data = [
     {
@@ -84,8 +81,8 @@ async function AboutUsAccordion({ t, locale }: Props) {
       title: t.our_standards,
       articles: [
         {
-          title: t.criteria,
-          content: t.lorem_ipsum,
+          title: why_choose_us.title,
+          content: why_choose_us.content,
         },
       ],
     },

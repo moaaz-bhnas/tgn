@@ -1,10 +1,12 @@
 import Container from "@/components/container";
+import JsonViewer from "@/components/json-viewer";
 import { Separator } from "@/components/ui/separator";
 import { Project, Upload } from "@/lib/api/types";
 import { getFullPath } from "@/lib/utils";
 import { T } from "@/types/i18n";
 import Image from "next/image";
 import React from "react";
+import { ExternalLink } from "lucide-react";
 
 type Props = { t: T; project: Project; images: Upload[] };
 
@@ -13,7 +15,22 @@ function CaseStudyArticle({ t, project, images }: Props) {
     <article>
       <Container className="!max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:items-end">
-          <h2 className="text-5xl font-extrabold uppercase lg:col-span-6">{project.title}</h2>
+          <div className="lg:col-span-6">
+            <div className="flex items-baseline gap-3">
+              <h2 className="text-5xl font-extrabold">{project.title}</h2>
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors self-start"
+                  aria-label="View live project"
+                >
+                  <ExternalLink className="w-5 h-5" />
+                </a>
+              )}
+            </div>
+          </div>
           <p className="lg:col-span-3">{project.slogan}</p>
           <p className="text-muted-foreground lg:col-span-3">{project.brand_identity}</p>
         </div>

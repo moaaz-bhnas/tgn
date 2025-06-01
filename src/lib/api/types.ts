@@ -179,6 +179,11 @@ export interface Settings {
   our_future: {
     here_to_help_content: string | null;
   };
+  why_choose_us: {
+    title: string;
+    content: string;
+    image: Upload | null;
+  };
 }
 
 export type CategoriesResponse = {

@@ -27,7 +27,7 @@ function ProjectCard({ project, locale }: Props) {
         <div className="absolute inset-0 bg-black/80 opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
           <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
           <div
-            className="text-sm text-white/90 leading-relaxed hidden lg:block"
+            className="text-sm text-white/90 line-clamp-3 leading-relaxed"
             dangerouslySetInnerHTML={{ __html: project.description }}
           />
         </div>
