@@ -152,7 +152,7 @@ export type ListParams = {
 
 export interface Settings {
   site_logo: Upload | null;
-  site_favicon: string | null;
+  site_favicon: Upload | null;
   footer_logo: Upload | null;
   site_title: string;
   contact_address: string;
