@@ -1,16 +1,55 @@
+"use client";
+
 import Container from "@/components/container";
-import JsonViewer from "@/components/json-viewer";
 import { Separator } from "@/components/ui/separator";
 import { Project, Upload } from "@/lib/api/types";
 import { getFullPath } from "@/lib/utils";
 import { T } from "@/types/i18n";
 import Image from "next/image";
-import React from "react";
 import { ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { useMediaQuery } from "usehooks-ts";
 
 type Props = { t: T; project: Project; images: Upload[] };
 
 function CaseStudyArticle({ t, project, images }: Props) {
+  const [ratios, setRatios] = useState<Record<string, number>>({});
+  const isLargeScreen = useMediaQuery("(min-width: 1024px)");
+
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>, path: string) => {
+    const { naturalWidth, naturalHeight } = e.currentTarget;
+    const ratio = naturalWidth / naturalHeight;
+    setRatios((prev) => ({ ...prev, [path]: ratio }));
+  };
+
+  // Group images into arrays based on screen size
+  const groupedImages = images.reduce<Upload[][]>((acc, image, index) => {
+    if (isLargeScreen) {
+      // Desktop layout: 3 images in first row, 2 in subsequent rows
+      if (index === 0) {
+        acc.push([image]);
+      } else if (index < 3) {
+        acc[0].push(image);
+      } else {
+        const pairIndex = Math.floor((index - 3) / 2);
+        if ((index - 3) % 2 === 0) {
+          acc.push([image]);
+        } else {
+          acc[pairIndex + 1].push(image);
+        }
+      }
+    } else {
+      // Mobile layout: 2 images per row
+      const pairIndex = Math.floor(index / 2);
+      if (index % 2 === 0) {
+        acc.push([image]);
+      } else {
+        acc[pairIndex].push(image);
+      }
+    }
+    return acc;
+  }, []);
+
   return (
     <article>
       <Container className="!max-w-7xl">
@@ -64,15 +103,24 @@ function CaseStudyArticle({ t, project, images }: Props) {
       {images.length > 0 && (
         <Container className="!max-w-7xl">
           <div className="flex flex-col gap-4">
-            {images.map((image) => (
-              <Image
-                src={getFullPath(image.path)}
-                alt={image.title}
-                width={0}
-                height={0}
-                sizes="100vw"
-                className="w-full aspect-[1920/1080] object-cover"
-              />
+            {groupedImages.map((row, rowIndex) => (
+              <div key={rowIndex} className="flex gap-4">
+                {row.map((image) => (
+                  <Image
+                    key={image.path}
+                    src={getFullPath(image.path)}
+                    alt={image.title}
+                    className="h-auto"
+                    style={{
+                      flex: ratios[image.path] || 1,
+                    }}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    onLoad={(e) => handleImageLoad(e, image.path)}
+                  />
+                ))}
+              </div>
             ))}
           </div>
         </Container>
