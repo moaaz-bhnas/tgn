@@ -2,12 +2,13 @@
 
 import Container from "@/components/container";
 import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Project, Upload } from "@/lib/api/types";
 import { getFullPath } from "@/lib/utils";
 import { T } from "@/types/i18n";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
 type Props = { t: T; project: Project; images: Upload[] };
@@ -15,6 +16,12 @@ type Props = { t: T; project: Project; images: Upload[] };
 function CaseStudyArticle({ t, project, images }: Props) {
   const [ratios, setRatios] = useState<Record<string, number>>({});
   const isLargeScreen = useMediaQuery("(min-width: 1024px)");
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Set loading to false after useMediaQuery initializes
+  useEffect(() => {
+    setIsLoading(false);
+  }, [isLargeScreen]);
 
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>, path: string) => {
     const { naturalWidth, naturalHeight } = e.currentTarget;
@@ -34,6 +41,14 @@ function CaseStudyArticle({ t, project, images }: Props) {
     }
     return acc;
   }, []);
+
+  const getMinHeight = () => {
+    const itemsPerRow = 3; // Always assume desktop layout for height calculation
+    const rows = Math.ceil(images.length / itemsPerRow);
+    const rowHeight = 250; // height of each row
+    const gapHeight = 16; // 4 * 4 (gap-4 = 1rem = 16px)
+    return rows * (rowHeight + gapHeight);
+  };
 
   return (
     <article>
@@ -85,31 +100,43 @@ function CaseStudyArticle({ t, project, images }: Props) {
         </Container>
       )}
 
-      {images.length > 0 && (
-        <Container className="!max-w-7xl">
-          <div className="flex flex-col gap-4">
-            {groupedImages.map((row, rowIndex) => (
-              <div key={rowIndex} className="flex gap-4">
-                {row.map((image) => (
-                  <Image
-                    key={image.path}
-                    src={getFullPath(image.path)}
-                    alt={image.title}
-                    className="h-auto"
-                    style={{
-                      flex: ratios[image.path] || 1,
-                    }}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    onLoad={(e) => handleImageLoad(e, image.path)}
-                  />
-                ))}
-              </div>
-            ))}
-          </div>
-        </Container>
-      )}
+      <div style={{ minHeight: `${getMinHeight()}px` }}>
+        {isLoading && (
+          <Container className="!max-w-7xl">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+              {Array.from({ length: 9 }).map((_, index) => (
+                <Skeleton key={index} className="h-[300px]" />
+              ))}
+            </div>
+          </Container>
+        )}
+
+        {images.length > 0 && !isLoading && (
+          <Container className="!max-w-7xl">
+            <div className="flex flex-col gap-4">
+              {groupedImages.map((row, rowIndex) => (
+                <div key={rowIndex} className="flex gap-4">
+                  {row.map((image) => (
+                    <Image
+                      key={image.path}
+                      src={getFullPath(image.path)}
+                      alt={image.title}
+                      className="h-auto"
+                      style={{
+                        flex: ratios[image.path] || 1,
+                      }}
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      onLoad={(e) => handleImageLoad(e, image.path)}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
+          </Container>
+        )}
+      </div>
     </article>
   );
 }
