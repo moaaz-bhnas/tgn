@@ -22,30 +22,15 @@ function CaseStudyArticle({ t, project, images }: Props) {
     setRatios((prev) => ({ ...prev, [path]: ratio }));
   };
 
-  // Group images into arrays based on screen size
+  // Group images into arrays of 3 for desktop and 2 for mobile
   const groupedImages = images.reduce<Upload[][]>((acc, image, index) => {
-    if (isLargeScreen) {
-      // Desktop layout: 3 images in first row, 2 in subsequent rows
-      if (index === 0) {
-        acc.push([image]);
-      } else if (index < 3) {
-        acc[0].push(image);
-      } else {
-        const pairIndex = Math.floor((index - 3) / 2);
-        if ((index - 3) % 2 === 0) {
-          acc.push([image]);
-        } else {
-          acc[pairIndex + 1].push(image);
-        }
-      }
+    const groupSize = isLargeScreen ? 3 : 2;
+    const groupIndex = Math.floor(index / groupSize);
+
+    if (index % groupSize === 0) {
+      acc.push([image]);
     } else {
-      // Mobile layout: 2 images per row
-      const pairIndex = Math.floor(index / 2);
-      if (index % 2 === 0) {
-        acc.push([image]);
-      } else {
-        acc[pairIndex].push(image);
-      }
+      acc[groupIndex].push(image);
     }
     return acc;
   }, []);
