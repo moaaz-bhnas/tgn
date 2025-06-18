@@ -78,7 +78,7 @@ export interface Project {
   thumbnail_img: string;
   link: string | null;
   featured: string;
-  active: number;
+  active: string;
   created_at: string;
   updated_at: string;
   title: string;
@@ -115,8 +115,8 @@ export interface Service {
   category_id: number;
   meta_keywords: string;
   meta_description: string;
-  featured: number;
-  active: number;
+  featured: string;
+  active: string;
   created_at: string;
   updated_at: string;
   title: string;
