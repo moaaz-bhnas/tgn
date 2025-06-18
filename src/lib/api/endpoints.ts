@@ -36,7 +36,7 @@ export class ApiEndpoints {
   }
 
   // Contact
-  async submitContact(data: ContactData) {
+  async submitContact(data: FormData) {
     return this.client.post<ApiResponse<[]>>("/api/v1/contacts", data);
   }
 

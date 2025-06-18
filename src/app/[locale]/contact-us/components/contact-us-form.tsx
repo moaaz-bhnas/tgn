@@ -43,14 +43,15 @@ function ContactUsForm({ t, locale }: { t: T; locale: Locale }) {
     try {
       setIsSubmitting(true);
 
+      const formData = new FormData();
+      formData.append("name", `${values.firstName} ${values.lastName}`);
+      formData.append("email", values.email);
+      formData.append("phone", values.phone);
+      formData.append("subject", values.industry ? `Industry: ${values.industry}` : "Contact Form Submission");
+      formData.append("message", values.story);
+
       const api = createApi({ language: locale });
-      const response = await api.submitContact({
-        name: `${values.firstName} ${values.lastName}`,
-        email: values.email,
-        phone: values.phone,
-        subject: values.industry ? `Industry: ${values.industry}` : "Contact Form Submission",
-        message: values.story,
-      });
+      const response = await api.submitContact(formData);
 
       if (response.success) {
         toast({

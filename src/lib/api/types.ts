@@ -77,7 +77,7 @@ export interface Project {
   images: string;
   thumbnail_img: string;
   link: string | null;
-  featured: number;
+  featured: string;
   active: number;
   created_at: string;
   updated_at: string;

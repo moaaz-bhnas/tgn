@@ -11,7 +11,7 @@ async function Projects({ locale }: Props) {
   const api = createApi({ language: locale });
   const response = await api.getProjects();
 
-  const projects = response.data.data;
+  const projects = response.data.data.filter((project: Project) => project.featured == "1");
 
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

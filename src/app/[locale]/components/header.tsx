@@ -28,7 +28,7 @@ export default async function Header({ t, locale }: { t: T; locale: Locale }) {
 
           <Separator className="w-4 bg-black" />
 
-          <a dir="ltr" href={`tel:${trim(settings.message.contact_phone)}`}>
+          <a dir="ltr" href={`https://wa.me/${trim(settings.message.contact_phone).replace(/[^0-9]/g, "")}`}>
             {settings.message.contact_phone}
           </a>
         </div>
