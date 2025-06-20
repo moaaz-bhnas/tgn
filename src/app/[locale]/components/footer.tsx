@@ -58,26 +58,26 @@ async function Footer({ t, locale }: Props) {
       {
         label: t.contact_us,
         links: [
-          { label: t.contact_sales, href: `/${locale}/contact-us` },
-          { label: t.send_feedback, href: `/${locale}/contact-us` },
-          { label: t.who_we_are, href: `/${locale}/about-us` },
-          { label: t.services, href: `/${locale}/services` },
+          { label: t.contact_sales, href: `/${locale}/contact-us`, target: "_self" },
+          { label: t.send_feedback, href: `/${locale}/contact-us`, target: "_self" },
+          { label: t.who_we_are, href: `/${locale}/about-us`, target: "_self" },
+          { label: t.services, href: `/${locale}/services`, target: "_self" },
         ],
       },
       {
         label: t.follow_us,
         links: [
-          { label: t.instagram, href: links_social.instagram_link || `/${locale}/` },
-          { label: t.facebook, href: links_social.facebook_link || `/${locale}/` },
-          { label: t.linkedin, href: links_social.linkedin_link || `/${locale}/` },
-          { label: t.behance, href: links_social.behance_link || `/${locale}/` },
+          { label: t.instagram, href: links_social.instagram_link || `/${locale}/`, target: "_blank" },
+          { label: t.facebook, href: links_social.facebook_link || `/${locale}/`, target: "_blank" },
+          { label: t.linkedin, href: links_social.linkedin_link || `/${locale}/`, target: "_blank" },
+          { label: t.behance, href: links_social.behance_link || `/${locale}/`, target: "_blank" },
         ],
       },
       {
         label: t.come_on_board,
         links: [
-          { label: t.get_interview, href: `/${locale}/come-on-board` },
-          { label: t.looking_for, href: `/${locale}/come-on-board` },
+          { label: t.get_interview, href: `/${locale}/come-on-board`, target: "_self" },
+          { label: t.looking_for, href: `/${locale}/come-on-board`, target: "_self" },
         ],
       },
     ];
@@ -90,7 +90,12 @@ async function Footer({ t, locale }: Props) {
 
             <div className="flex flex-col gap-1">
               {column.links.map((link, index) => (
-                <Link key={index} href={link.href} className={cn("font-extralight hover:underline")}>
+                <Link
+                  key={index}
+                  href={link.href}
+                  className={cn("font-extralight hover:underline")}
+                  target={link.target}
+                >
                   {link.label}
                 </Link>
               ))}

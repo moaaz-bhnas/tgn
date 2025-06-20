@@ -48,7 +48,7 @@ async function FollowUs({ t, color = "black", locale }: Props) {
       <ul className="flex items-center gap-2">
         {socialLinks.map((link) => (
           <li key={link.name}>
-            <a className="" href={link.href || "/"}>
+            <a className="" href={link.href || "/"} target="_blank">
               <link.icon className="h-4 w-4" />
             </a>
           </li>

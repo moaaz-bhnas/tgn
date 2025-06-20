@@ -1,4 +1,4 @@
-import { Sora } from "next/font/google";
+import { Alexandria, Sora } from "next/font/google";
 import "../globals.css";
 import { getDictionary } from "@/lib/dictionaries";
 import { Locale } from "@/types/locale";
@@ -15,6 +15,28 @@ const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
 });
+
+const alexandria = Alexandria({
+  variable: "--font-alexandria",
+  subsets: ["latin", "arabic"],
+});
+
+// Function to get font classes based on locale
+function getFontClasses(locale: Locale) {
+  const isArabic = locale === "ar";
+
+  if (isArabic) {
+    return {
+      variable: alexandria.variable,
+      className: alexandria.className,
+    };
+  } else {
+    return {
+      variable: sora.variable,
+      className: sora.className,
+    };
+  }
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -52,9 +74,11 @@ export default async function RootLayout({
   const { locale } = await params;
   const { layout: t } = await getDictionary(locale);
 
+  const fontClasses = getFontClasses(locale);
+
   return (
     <html lang={locale} dir={isRtl(locale) ? "rtl" : "ltr"}>
-      <body className={cn("antialiased", sora.variable, sora.className)}>
+      <body className={cn("antialiased", fontClasses.variable, fontClasses.className)}>
         <Header t={t.header} locale={locale} />
 
         <main>{children}</main>

@@ -12,13 +12,11 @@ function ServicesAccordion({ t, categories }: Props) {
   return (
     <Accordion className="divide-y divide-gray-800" type="single" collapsible>
       {categories.map((category) => {
-        const services = category.services.filter((service) => service.active == "1");
-
         return (
           <AccordionItem key={category.id} value={category.name}>
             <AccordionTrigger className="text-2xl uppercase hover:no-underline">{category.name}</AccordionTrigger>
             <AccordionContent>
-              {services.map((service) => (
+              {category.services.map((service) => (
                 <AccordionArticle
                   key={service.id}
                   article={{

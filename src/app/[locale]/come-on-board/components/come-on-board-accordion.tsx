@@ -14,8 +14,6 @@ async function ComeOnBoardAccordion({ t, locale }: Props) {
   const api = createApi({ language: locale });
   const careersResponse = await api.getCareers();
 
-  const careers = careersResponse.data.data.filter((career) => career.active);
-
   function renderApplyButton(career: Career) {
     return (
       <Bubble arrowPosition="right">
@@ -34,7 +32,7 @@ async function ComeOnBoardAccordion({ t, locale }: Props) {
 
   return (
     <Accordion className="divide-y divide-gray-800" type="single" collapsible>
-      {careers.map((career) => (
+      {careersResponse.data.data.map((career) => (
         <AccordionItem key={career.title} value={career.title}>
           <AccordionTrigger className="text-2xl uppercase hover:no-underline">{career.title}</AccordionTrigger>
           <AccordionContent>
