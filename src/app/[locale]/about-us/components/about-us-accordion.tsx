@@ -105,13 +105,17 @@ async function AboutUsAccordion({ t, locale }: Props) {
       ))}
 
       {/* Our team */}
-      <AccordionItem value="team">
-        <AccordionTrigger className="text-2xl uppercase hover:no-underline">{t.meet_the_team}</AccordionTrigger>
-        <AccordionContent className="space-y-8">
-          <TeamSection title={t.board} team={boardMembers} />
-          <TeamSection title={t.team} team={teamMembers} />
-        </AccordionContent>
-      </AccordionItem>
+      {boardMembers.length > 0 && teamMembers.length > 0 ? (
+        <AccordionItem value="team">
+          <AccordionTrigger className="text-2xl uppercase hover:no-underline">{t.meet_the_team}</AccordionTrigger>
+          <AccordionContent className="space-y-8">
+            <TeamSection title={t.board} team={boardMembers} />
+            <TeamSection title={t.team} team={teamMembers} />
+          </AccordionContent>
+        </AccordionItem>
+      ) : (
+        <></>
+      )}
     </Accordion>
   );
 }
